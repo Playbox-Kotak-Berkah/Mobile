@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 
@@ -14,6 +15,8 @@ class AppTextfield extends StatelessWidget {
   int maxLines = 1;
   Color? labelColor;
   Widget? prefixIcon;
+  Widget? prefix;
+  bool obscureText = false;
 
   AppTextfield({
     super.key,
@@ -26,6 +29,8 @@ class AppTextfield extends StatelessWidget {
     this.maxLines = 1,
     this.labelColor,
     this.prefixIcon,
+    this.prefix,
+    this.obscureText = false,
   });
 
   @override
@@ -52,6 +57,7 @@ class AppTextfield extends StatelessWidget {
               hintStyle: body5TextStyle(
                 color: ColorConstants.slate[400],
               ),
+              prefix: prefix,
             ),
             textAlignVertical: prefixIcon != null
                 ? TextAlignVertical.center
@@ -62,6 +68,7 @@ class AppTextfield extends StatelessWidget {
             validator: validator,
             keyboardType: keyboardType,
             maxLines: maxLines,
+            obscureText: obscureText,
           ),
         ),
       ],
