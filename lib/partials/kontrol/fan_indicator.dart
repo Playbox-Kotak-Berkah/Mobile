@@ -13,36 +13,41 @@ class FanIndicator extends StatefulWidget {
 class _FanIndicatorState extends State<FanIndicator> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: ColorConstants.primary[500],
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SvgPicture.asset(
-            "assets/icons/fan_white.svg",
-            width: 45,
-            height: 45,
-          ),
-          SizedBox(height: 8),
-          Text(
-            "Kincir Air",
-            style: body4TextStyle(
-              color: Colors.white,
-              weight: FontWeight.bold,
+    return InkWell(
+      onTap: () {
+        print('halo dek');
+      },
+      child: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: ColorConstants.primary[500],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SvgPicture.asset(
+              "assets/icons/fan_white.svg",
+              width: 45,
+              height: 45,
             ),
-          ),
-          SizedBox(height: 4),
-          Text(
-            "Mati",
-            style: body6TextStyle(
-              color: Colors.white,
+            SizedBox(height: 8),
+            Text(
+              "Kincir Air",
+              style: body4TextStyle(
+                color: Colors.white,
+                weight: FontWeight.bold,
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: 4),
+            Text(
+              "Mati",
+              style: body6TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

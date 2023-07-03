@@ -1,14 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:playbox/app/types/indicator_type.dart';
+import 'package:playbox/partials/kontrol/bulb_indicator.dart';
+import 'package:playbox/partials/kontrol/card_indicator.dart';
+import 'package:playbox/partials/kontrol/fan_indicator.dart';
+import 'package:playbox/partials/kontrol/water_indicator.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
-import 'package:playbox/widgets/kontrol/bulb_indicator.dart';
-import 'package:playbox/widgets/kontrol/fan_indicator.dart';
-import 'package:playbox/widgets/kontrol/water_indicator.dart';
 import 'package:sizer/sizer.dart';
 
 class KontrolPage extends StatefulWidget {
@@ -101,11 +100,17 @@ class _KontrolPageState extends State<KontrolPage> {
               Row(
                 children: [
                   Expanded(
-                    child: BulbIndicator(),
+                    child: CardIndicator(
+                      type: Indicator.bulb,
+                      active: false,
+                    ),
                   ),
                   SizedBox(width: 16),
                   Expanded(
-                    child: FanIndicator(),
+                    child: CardIndicator(
+                      type: Indicator.fan,
+                      active: true,
+                    ),
                   ),
                 ],
               ),
@@ -113,7 +118,10 @@ class _KontrolPageState extends State<KontrolPage> {
               Row(
                 children: [
                   Expanded(
-                    child: WaterIndicator(),
+                    child: CardIndicator(
+                      type: Indicator.water,
+                      active: true,
+                    ),
                   ),
                   SizedBox(width: 16),
                   Expanded(
