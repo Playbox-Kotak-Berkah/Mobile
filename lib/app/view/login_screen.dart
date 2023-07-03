@@ -37,7 +37,7 @@ class LoginPage extends GetView<LoginController> {
                     children: [
                       Column(
                         children: [
-                          SizedBox(height: 30),
+                          SizedBox(height: 50),
                           SvgPicture.asset(
                               "assets/logo/logo_text_white_horizontal.svg"),
                         ],

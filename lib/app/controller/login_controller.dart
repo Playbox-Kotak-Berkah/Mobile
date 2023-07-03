@@ -2,10 +2,14 @@ import 'dart:convert';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/models/login/login_model.dart';
+import 'package:playbox/routes/app_route.dart';
+import 'package:playbox/services/api/api_utils.dart';
 import 'package:playbox/services/api/fetch_data.dart';
 import 'package:playbox/services/api/request_method.dart';
+import 'package:playbox/services/token/app_token.dart';
 import 'package:playbox/utils/form_converter.dart';
 
 class LoginController extends GetxController {
@@ -45,7 +49,9 @@ class LoginController extends GetxController {
           method: RequestMethod.POST);
 
       if (response != null) {
-        print(response.data?.token);
+        UserToken.setToken(response.data!.token);
+        ApiUtils.showAlert("Login success", isSuccess: true);
+        Get.toNamed(AppRoute.dashboard);
       }
     }
   }

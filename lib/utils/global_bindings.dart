@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
+import 'package:playbox/app/controller/global_controller.dart';
 
 class GlobalBinding extends Bindings {
   @override
   void dependencies() {
-    // TODO: Add Global Controller here
+    Get.lazyPut(() => GlobalController());
   }
 }
