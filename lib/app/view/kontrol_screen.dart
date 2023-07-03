@@ -6,6 +6,9 @@ import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
+import 'package:playbox/widgets/kontrol/bulb_indicator.dart';
+import 'package:playbox/widgets/kontrol/fan_indicator.dart';
+import 'package:playbox/widgets/kontrol/water_indicator.dart';
 import 'package:sizer/sizer.dart';
 
 class KontrolPage extends StatefulWidget {
@@ -98,72 +101,11 @@ class _KontrolPageState extends State<KontrolPage> {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/bulb_blue.svg",
-                            width: 45,
-                            height: 45,
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            "Lampu Tambak",
-                            style: body4TextStyle(
-                              color: ColorConstants.slate[700],
-                              weight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Mati",
-                            style: body6TextStyle(
-                                color: ColorConstants.slate[400]),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: BulbIndicator(),
                   ),
                   SizedBox(width: 16),
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: ColorConstants.primary[500],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/fan_white.svg",
-                            width: 45,
-                            height: 45,
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            "Kincir Air",
-                            style: body4TextStyle(
-                              color: Colors.white,
-                              weight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Mati",
-                            style: body6TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: FanIndicator(),
                   ),
                 ],
               ),
@@ -171,37 +113,7 @@ class _KontrolPageState extends State<KontrolPage> {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/water_blue.svg",
-                            width: 45,
-                            height: 45,
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            "Kran Air",
-                            style: body4TextStyle(
-                              color: ColorConstants.slate[700],
-                              weight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Mati",
-                            style: body6TextStyle(
-                                color: ColorConstants.slate[400]),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: WaterIndicator(),
                   ),
                   SizedBox(width: 16),
                   Expanded(
