@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/login_controller.dart';
+import 'package:playbox/routes/app_route.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_textfield.dart';
@@ -79,13 +80,42 @@ class LoginPage extends GetView<LoginController> {
                           )
                         ],
                       ),
-                      ElevatedButton(
-                        onPressed: controller.login,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorConstants.primary[400],
-                        ),
-                        child: Text("LOGIN"),
-                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ElevatedButton(
+                            onPressed: controller.login,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorConstants.primary[400],
+                            ),
+                            child: Text("LOGIN"),
+                          ),
+                          SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Belum memiliki akun? ",
+                                style: body5TextStyle(
+                                  color: ColorConstants.slate[100],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(AppRoute.register);
+                                },
+                                child: Text(
+                                  "Register",
+                                  style: body5TextStyle(
+                                    color: ColorConstants.slate[50],
+                                    weight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
