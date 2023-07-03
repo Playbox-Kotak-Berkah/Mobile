@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:playbox/app/types/indicator_type.dart';
+import 'package:playbox/partials/kontrol/dialog_indicator.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 
@@ -23,7 +24,15 @@ class _CardIndicatorState extends State<CardIndicator> {
     String color = widget.active ? "white" : "blue";
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) => DialogIndicator(
+            type: widget.type,
+            active: widget.active,
+          ),
+        );
+      },
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
