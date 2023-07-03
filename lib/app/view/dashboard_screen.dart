@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
+import 'package:playbox/partials/dashboard/do_card.dart';
+import 'package:playbox/partials/dashboard/ph_card.dart';
+import 'package:playbox/partials/dashboard/salinity_card.dart';
+import 'package:playbox/partials/dashboard/temp_card.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
-import 'package:playbox/widgets/dashboard/do_card.dart';
-import 'package:playbox/widgets/dashboard/ph_card.dart';
-import 'package:playbox/widgets/dashboard/salinity_card.dart';
-import 'package:playbox/widgets/dashboard/temp_card.dart';
 import 'package:sizer/sizer.dart';
 
 class DashboardPage extends StatefulWidget {
