@@ -21,6 +21,8 @@ dependencies:
   get_storage: ^2.1.1
   fluttertoast: ^8.2.2
   json_annotation: ^4.8.1
+  build_runner: ^2.3.3
+  json_serializable: ^6.6.2
 
 dev_dependencies:
   flutter_test:

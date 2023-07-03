@@ -1,16 +1,19 @@
 class BaseResponse {
   String message;
-  num status;
+  bool success;
+  String? error;
 
-  BaseResponse({required this.message, required this.status});
+  BaseResponse({required this.message, required this.success, this.error});
 
   factory BaseResponse.fromJson(Map<String, dynamic> json) => BaseResponse(
         message: json["message"],
-        status: json['status'],
+        success: json['success'],
+        error: json['error'],
       );
 
   Map<dynamic, dynamic> toJson() => <String, dynamic>{
         'message': message,
-        'status': status,
+        'success': success,
+        'error': error,
       };
 }

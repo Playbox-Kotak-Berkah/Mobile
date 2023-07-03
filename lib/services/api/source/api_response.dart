@@ -5,19 +5,22 @@ import 'package:playbox/services/api/source/model_factory.dart';
 
 class ApiResponse<T> extends BaseResponse {
   final T? data;
+  String? error;
 
   ApiResponse({
     this.data,
-    required num status,
+    required bool success,
     required String message,
-  }) : super(message: message, status: status);
+    this.error,
+  }) : super(message: message, success: success, error: error);
 
   factory ApiResponse.fromJson(
     Map<String, dynamic> json,
   ) {
     return ApiResponse<T>(
       message: json['message'],
-      status: json['status'],
+      success: json['success'],
+      error: json['error'],
       data: _Converter<T>().fromJson(json['data']),
     );
   }
@@ -25,19 +28,22 @@ class ApiResponse<T> extends BaseResponse {
 
 class ApiResponses<T> extends BaseResponse {
   List<T>? data;
+  String? error;
 
   ApiResponses({
     this.data = const [],
-    required num status,
+    required bool success,
     required String message,
-  }) : super(message: message, status: status);
+    this.error,
+  }) : super(message: message, success: success, error: error);
 
   factory ApiResponses.fromJson(
     Map<String, dynamic> json,
   ) {
     return ApiResponses<T>(
       message: json['message'],
-      status: json['status'],
+      success: json['success'],
+      error: json['error'],
       data: List<T>.from((json["results"] ?? json["data"])
           .map((x) => _Converter<T?>().fromJson(x))),
     );

@@ -70,6 +70,7 @@ class LoginPage extends GetView<LoginController> {
                             controller: controller.form['password']!,
                             placeholder: "Minimal 8 Karater",
                             labelColor: ColorConstants.slate[100],
+                            obscureText: true,
                             prefixIcon: Icon(
                               Icons.lock_outline,
                               size: 18,

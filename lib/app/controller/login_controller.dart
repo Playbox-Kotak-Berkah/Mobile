@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:playbox/app/models/login/login_model.dart';
+import 'package:playbox/services/api/fetch_data.dart';
+import 'package:playbox/services/api/request_method.dart';
 import 'package:playbox/utils/form_converter.dart';
 
 class LoginController extends GetxController {
@@ -30,10 +35,18 @@ class LoginController extends GetxController {
     return null;
   }
 
-  void login() {
+  void login() async {
     if (formKey.currentState!.validate()) {
       final data = formConverter(form);
-      print(data);
+
+      var response = await fetchData<LoginModel>(
+          url: "api/farmer-login",
+          data: jsonEncode(data),
+          method: RequestMethod.POST);
+
+      if (response != null) {
+        print(response.data?.token);
+      }
     }
   }
 }
