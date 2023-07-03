@@ -29,8 +29,8 @@ Future<ApiResponse<T>?> fetchData<T>({
       ApiUtils.logout();
     }
     if (isAlert!) {
-      if (response?.data?['message'] != null) {
-        ApiUtils.showAlert(response?.data['message']);
+      if (response?.data?['error'] != null) {
+        ApiUtils.showAlert(response?.data['error']);
       } else {
         ApiUtils.showAlert(e.response?.data ??
             e.response?.statusMessage ??
@@ -66,7 +66,7 @@ Future<ApiResponses<T>?> fetchMultipleData<T>({
     }
     if (isAlert!) {
       if (response?.data.runtimeType == Map) {
-        ApiUtils.showAlert(response?.data?['message']);
+        ApiUtils.showAlert(response?.data?['error']);
       } else {
         ApiUtils.showAlert(
             e.response?.statusMessage ?? e.message ?? e.toString());

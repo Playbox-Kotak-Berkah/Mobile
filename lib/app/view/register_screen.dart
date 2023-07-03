@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/register_controller.dart';
+import 'package:playbox/routes/app_route.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_textfield.dart';
@@ -108,7 +109,7 @@ class RegisterPage extends GetView<RegisterController> {
                           AppTextfield(
                             obscureText: true,
                             label: 'Konfirmasi Password',
-                            controller: controller.confirmPassword,
+                            controller: controller.form['confirm_password']!,
                             placeholder: "Minimal 8 Karater",
                             labelColor: ColorConstants.slate[100],
                             prefixIcon: Icon(
@@ -159,8 +160,32 @@ class RegisterPage extends GetView<RegisterController> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: ColorConstants.primary[400],
                           ),
-                          child: Text("LOGIN"),
+                          child: Text("REGISTER"),
                         ),
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Sudah memiliki akun? ",
+                            style: body5TextStyle(
+                              color: ColorConstants.slate[100],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoute.login);
+                            },
+                            child: Text(
+                              "Login",
+                              style: body5TextStyle(
+                                color: ColorConstants.slate[50],
+                                weight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ],
                   ),
