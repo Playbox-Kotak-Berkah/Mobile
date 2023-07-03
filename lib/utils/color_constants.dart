@@ -35,4 +35,6 @@ class ColorConstants {
     800: Color(0xff072950),
     900: Color(0xff031428),
   };
+
+  static const error = Color(0xffFF574D);
 }

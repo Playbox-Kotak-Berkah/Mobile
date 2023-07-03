@@ -105,7 +105,36 @@ class _AppBottomBarState extends State<AppBottomBar> {
                     style: body6TextStyle(size: 10),
                   ),
                 ],
-              )
+              ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoute.profile);
+                },
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.person_outline,
+                      size: 30,
+                      color: currentRoute == AppRoute.profile
+                          ? ColorConstants.primary[400]
+                          : ColorConstants.slate[400],
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Profile",
+                      style: body6TextStyle(
+                        size: 10,
+                        weight: currentRoute == AppRoute.profile
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                        color: currentRoute == AppRoute.profile
+                            ? ColorConstants.primary[400]
+                            : ColorConstants.slate[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ],

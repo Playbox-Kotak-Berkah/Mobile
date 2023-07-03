@@ -33,4 +33,8 @@ class AppRoute {
   static String dashboard = "/dashboard";
   static String kontrol = "/kontrol";
   static String marketplace = "/marketplace";
+
+  // Aqua Farmers
+  static String farmerMarketplace = "/farmers/marketplace";
+  static String customerMarketplace = "/customer/marketplace";
 }
