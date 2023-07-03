@@ -3,6 +3,10 @@ import 'package:playbox/utils/color_constants.dart';
 
 ThemeData globalTheme() {
   return ThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: ColorConstants.slate[50],
+      elevation: 0,
+    ),
     primaryColor: ColorConstants.primary[500],
     scaffoldBackgroundColor: ColorConstants.slate[50],
     elevatedButtonTheme: ElevatedButtonThemeData(

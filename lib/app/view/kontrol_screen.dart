@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playbox/app/types/indicator_type.dart';
-import 'package:playbox/partials/kontrol/bulb_indicator.dart';
 import 'package:playbox/partials/kontrol/card_indicator.dart';
-import 'package:playbox/partials/kontrol/fan_indicator.dart';
-import 'package:playbox/partials/kontrol/water_indicator.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
@@ -21,47 +18,59 @@ class _KontrolPageState extends State<KontrolPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(100.w, 80),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          flexibleSpace: Column(
+            children: [
+              SizedBox(height: 50),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Kontrol Tambak",
+                      style: body1TextStyle(weight: FontWeight.w600),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.chat_bubble_outline_outlined,
+                            color: ColorConstants.primary[500],
+                            size: 16,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            "Konsultasi",
+                            style: body5TextStyle(
+                              color: ColorConstants.primary[500],
+                              weight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Kontrol Tambak",
-                    style: body1TextStyle(weight: FontWeight.w600),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                    ),
-                    onPressed: () {},
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.chat_bubble_outline_outlined,
-                          color: ColorConstants.primary[500],
-                          size: 16,
-                        ),
-                        SizedBox(width: 4),
-                        Text(
-                          "Konsultasi",
-                          style: body5TextStyle(
-                            color: ColorConstants.primary[500],
-                            weight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
               AppDropdown(
                 hintText: "Pilih Tambak",
                 prefixIcon: Icon(Icons.location_on_outlined),
