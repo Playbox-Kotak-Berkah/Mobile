@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           title: 'Playbox APP',
           theme: globalTheme(),
           getPages: appPage(),
-          initialRoute: AppRoute.register,
+          initialRoute: AppRoute.dashboard,
           builder: (context, child) {
             return MediaQuery(
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
