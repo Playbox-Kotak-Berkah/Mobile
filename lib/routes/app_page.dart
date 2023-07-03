@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:playbox/app/bindings/dashboard_bindings.dart';
 import 'package:playbox/app/bindings/login_bindings.dart';
 import 'package:playbox/app/bindings/onboarding_bindings.dart';
 import 'package:playbox/app/bindings/register_bindings.dart';
+import 'package:playbox/app/view/dashboard_screen.dart';
 import 'package:playbox/app/view/login_screen.dart';
 import 'package:playbox/app/view/onboarding_screen.dart';
 import 'package:playbox/app/view/register_screen.dart';
@@ -28,6 +30,11 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.register,
       page: () => const RegisterPage(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: AppRoute.dashboard,
+      page: () => DashboardPage(),
+      binding: DashboardBinding(),
     ),
   ];
 }

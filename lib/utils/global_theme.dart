@@ -4,6 +4,7 @@ import 'package:playbox/utils/color_constants.dart';
 ThemeData globalTheme() {
   return ThemeData(
     primaryColor: ColorConstants.primary[500],
+    scaffoldBackgroundColor: ColorConstants.slate[50],
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,

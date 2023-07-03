@@ -29,4 +29,8 @@ class AppRoute {
 
   // Home
   static String home = "/home";
+
+  static String dashboard = "/dashboard";
+  static String kontrol = "/kontrol";
+  static String marketplace = "/marketplace";
 }
