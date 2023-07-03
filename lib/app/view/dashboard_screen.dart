@@ -96,7 +96,7 @@ class _DashboardPageState extends State<DashboardPage> {
               Row(
                 children: [
                   SizedBox(
-                    width: 35.w,
+                    width: 30.w,
                     child: Text("Kolam yang Dipantau"),
                   ),
                   SizedBox(width: 12),
@@ -120,7 +120,7 @@ class _DashboardPageState extends State<DashboardPage> {
               Row(
                 children: [
                   SizedBox(
-                    width: 35.w,
+                    width: 30.w,
                     child: Text("Pilih Siklus Kolam (Harian)"),
                   ),
                   SizedBox(width: 12),

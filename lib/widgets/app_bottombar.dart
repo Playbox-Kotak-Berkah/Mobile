@@ -52,6 +52,9 @@ class _AppBottomBarState extends State<AppBottomBar> {
                       color: currentRoute == AppRoute.dashboard
                           ? ColorConstants.primary[400]
                           : ColorConstants.slate[400],
+                      weight: currentRoute == AppRoute.dashboard
+                          ? FontWeight.bold
+                          : FontWeight.normal,
                     ),
                   ),
                 ],
@@ -61,11 +64,22 @@ class _AppBottomBarState extends State<AppBottomBar> {
                   SvgPicture.asset(
                     "assets/icons/kontrol.svg",
                     width: 28,
+                    color: currentRoute == AppRoute.kontrol
+                        ? ColorConstants.primary[400]
+                        : ColorConstants.slate[400],
                   ),
                   SizedBox(height: 8),
                   Text(
                     "Kontrol",
-                    style: body6TextStyle(size: 10),
+                    style: body6TextStyle(
+                      size: 10,
+                      weight: currentRoute == AppRoute.kontrol
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                      color: currentRoute == AppRoute.kontrol
+                          ? ColorConstants.primary[400]
+                          : ColorConstants.slate[400],
+                    ),
                   ),
                 ],
               ),
