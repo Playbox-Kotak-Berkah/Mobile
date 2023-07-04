@@ -18,6 +18,7 @@ class FarmerMarketplacePage extends GetView<FarmerMarketplaceController> {
       appBar: PreferredSize(
         preferredSize: Size(100.w, 75),
         child: AppBar(
+          automaticallyImplyLeading: false,
           flexibleSpace: Column(
             children: [
               SizedBox(height: 50),
@@ -84,7 +85,7 @@ class FarmerMarketplacePage extends GetView<FarmerMarketplaceController> {
           child: Column(
             children: [
               SizedBox(height: 10),
-              SwitchUser(),
+              SwitchUser(isFarmer: true),
               SizedBox(height: 16),
               CardUser(),
               SizedBox(height: 20),
