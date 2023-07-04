@@ -18,7 +18,7 @@ class AppBottomBar extends StatefulWidget {
 class _AppBottomBarState extends State<AppBottomBar> {
   @override
   Widget build(BuildContext context) {
-    var currentRoute = Get.currentRoute;
+    final currentRoute = ModalRoute.of(context)?.settings.name;
 
     return Container(
       width: 100.w,
@@ -37,7 +37,9 @@ class _AppBottomBarState extends State<AppBottomBar> {
             children: [
               InkWell(
                 onTap: () {
-                  Get.toNamed(AppRoute.dashboard);
+                  Get.toNamed(
+                    AppRoute.dashboard,
+                  );
                 },
                 child: Column(
                   children: [
@@ -93,29 +95,34 @@ class _AppBottomBarState extends State<AppBottomBar> {
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/marketplace.svg",
-                    width: 28,
-                    color: currentRoute == AppRoute.farmerMarketplace
-                        ? ColorConstants.primary[400]
-                        : ColorConstants.slate[400],
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    "Marketplace",
-                    style: body6TextStyle(
-                      size: 10,
-                      weight: currentRoute == AppRoute.farmerMarketplace
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+              InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoute.farmerMarketplace);
+                },
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/marketplace.svg",
+                      width: 28,
                       color: currentRoute == AppRoute.farmerMarketplace
                           ? ColorConstants.primary[400]
                           : ColorConstants.slate[400],
                     ),
-                  ),
-                ],
+                    SizedBox(height: 8),
+                    Text(
+                      "Marketplace",
+                      style: body6TextStyle(
+                        size: 10,
+                        weight: currentRoute == AppRoute.farmerMarketplace
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                        color: currentRoute == AppRoute.farmerMarketplace
+                            ? ColorConstants.primary[400]
+                            : ColorConstants.slate[400],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               InkWell(
                 onTap: () {

@@ -63,6 +63,7 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.customerMarketplace,
       page: () => UserMarketplacePage(),
       binding: UserMarketplaceBinding(),
+      transition: Transition.rightToLeft,
     ),
   ];
 }
