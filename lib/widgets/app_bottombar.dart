@@ -98,11 +98,22 @@ class _AppBottomBarState extends State<AppBottomBar> {
                   SvgPicture.asset(
                     "assets/icons/marketplace.svg",
                     width: 28,
+                    color: currentRoute == AppRoute.farmerMarketplace
+                        ? ColorConstants.primary[400]
+                        : ColorConstants.slate[400],
                   ),
                   SizedBox(height: 8),
                   Text(
                     "Marketplace",
-                    style: body6TextStyle(size: 10),
+                    style: body6TextStyle(
+                      size: 10,
+                      weight: currentRoute == AppRoute.farmerMarketplace
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                      color: currentRoute == AppRoute.farmerMarketplace
+                          ? ColorConstants.primary[400]
+                          : ColorConstants.slate[400],
+                    ),
                   ),
                 ],
               ),
