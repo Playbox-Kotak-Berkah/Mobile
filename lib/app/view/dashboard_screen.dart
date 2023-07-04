@@ -25,6 +25,7 @@ class _DashboardPageState extends State<DashboardPage> {
       appBar: PreferredSize(
         preferredSize: Size(100.w, 80),
         child: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: ColorConstants.slate[50],
           flexibleSpace: Padding(
