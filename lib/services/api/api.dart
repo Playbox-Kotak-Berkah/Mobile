@@ -21,7 +21,7 @@ class ContentTypeInterceptor extends Interceptor {
 
 Dio Api({bool? isFormData = false}) {
   final dio = Dio(); // With default `Options`.
-  dio.options.baseUrl = "https://backend-production-9a1b.up.railway.app/";
+  dio.options.baseUrl = "https://backend-production-be0d.up.railway.app/";
 
   var header = {
     'Accept': 'application/json',

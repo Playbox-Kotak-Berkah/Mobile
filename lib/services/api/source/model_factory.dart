@@ -1,4 +1,5 @@
 import 'package:playbox/app/models/login/login_model.dart';
+import 'package:playbox/app/models/profile/profile_model.dart';
 import 'package:playbox/app/models/register/register_model.dart';
 
 abstract class ModelFactory {
@@ -8,6 +9,8 @@ abstract class ModelFactory {
       return LoginModel.fromJson(json);
     } else if (strType == (RegisterModel).toString()) {
       return RegisterModel.fromJson(json);
+    } else if (strType == (ProfileModel).toString()) {
+      return ProfileModel.fromJson(json);
     } else {
       throw UnimplementedError();
     }
