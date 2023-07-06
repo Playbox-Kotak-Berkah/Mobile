@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:playbox/routes/app_route.dart';
 import 'package:sizer/sizer.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       Timer(const Duration(seconds: 3), () {
-        // TODO: Redirect to onboarding screen
+        Get.offAllNamed(AppRoute.onboarding);
       });
     });
   }

@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:playbox/partials/onboarding/register_modal.dart';
+import 'package:playbox/routes/app_route.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get i => Get.find();
@@ -29,12 +32,24 @@ class OnboardingController extends GetxController {
     }
   }
 
-  void register() {
-    // TODO: Redirect to Register Screnn
+  void register(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          // <-- SEE HERE
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      builder: (builder) {
+        return RegisterModal();
+      },
+    );
   }
 
   void login() {
-    // TODO: Redirect to Login Screen
+    Get.toNamed(AppRoute.login);
   }
 
   void back() {

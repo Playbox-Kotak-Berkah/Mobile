@@ -95,7 +95,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                           onPressed: () {
                             controller.current.value != 3
                                 ? controller.next()
-                                : controller.register();
+                                : controller.register(context);
                           },
                           child: Obx(() => controller.current.value == 3
                               ? Text('Gabung Sekarang')
