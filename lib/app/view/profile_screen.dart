@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:playbox/app/controller/global_controller.dart';
 import 'package:playbox/app/controller/profile_controller.dart';
 import 'package:playbox/partials/profile/about_profile.dart';
 import 'package:playbox/partials/profile/account_settings.dart';
@@ -9,8 +10,16 @@ import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
 import 'package:sizer/sizer.dart';
 
-class ProfilePage extends GetView<ProfileController> {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  GlobalController globalController = GlobalController.i;
+  ProfileController controller = ProfileController.i;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +87,7 @@ class ProfilePage extends GetView<ProfileController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Fadli Antarino",
+                          globalController.profile.value?.name ?? "",
                           style: h4TextStyle(
                             weight: FontWeight.bold,
                           ),

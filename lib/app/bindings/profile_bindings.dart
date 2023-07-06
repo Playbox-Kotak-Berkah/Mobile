@@ -4,6 +4,6 @@ import 'package:playbox/app/controller/profile_controller.dart';
 class ProfileBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ProfileController>(() => ProfileController());
+    Get.put<ProfileController>(ProfileController());
   }
 }
