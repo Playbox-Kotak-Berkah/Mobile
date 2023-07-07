@@ -60,9 +60,16 @@ class _AppDropdownState extends State<AppDropdown> {
       barrierColor: Color.fromRGBO(0, 0, 0, 0.3),
       isExpanded: true,
       isDense: true,
+      iconStyleData: IconStyleData(
+        iconSize: 1,
+      ),
       decoration: InputDecoration(
         constraints: BoxConstraints(maxWidth: 100.w),
         prefixIcon: widget.prefixIcon,
+        suffixIcon: Icon(
+          Icons.arrow_drop_down,
+          size: 22,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
@@ -72,7 +79,6 @@ class _AppDropdownState extends State<AppDropdown> {
           horizontal: 12,
           vertical: 12,
         ),
-        counterStyle: body5TextStyle(),
         filled: true,
         fillColor: Colors.white,
         hintText: widget.hintText,
@@ -80,6 +86,23 @@ class _AppDropdownState extends State<AppDropdown> {
           color: ColorConstants.slate[400],
         ),
       ),
+      hint: widget.hintText != null
+          ? SizedBox(
+              width: 100.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    widget.hintText!,
+                    style: body5TextStyle(
+                      color: ColorConstants.slate[400],
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : null,
       onChanged: (e) {
         setState(() {
           if (e != null) {

@@ -60,6 +60,7 @@ Future<ApiResponses<T>?> fetchMultipleData<T>({
     ApiResponses<T> response = ApiResponses.fromJson(request.data);
     return response;
   } on DioException catch (e) {
+    print(e);
     final response = e.response;
     if (response?.statusCode == 409) {
       ApiUtils.logout();

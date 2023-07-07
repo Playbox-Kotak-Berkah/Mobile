@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:playbox/app/controller/dashboard_controller.dart';
 import 'package:playbox/partials/dashboard/dashboard_appbar.dart';
 import 'package:playbox/partials/dashboard/do_card.dart';
 import 'package:playbox/partials/dashboard/ph_card.dart';
@@ -18,8 +20,18 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  DashboardController controller = DashboardController.i;
+  var a = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getAllFarm();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(controller.farms);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(100.w, 80),
@@ -51,15 +63,22 @@ class _DashboardPageState extends State<DashboardPage> {
                 textAlign: TextAlign.justify,
               ),
               SizedBox(height: 16),
-              AppDropdown(
-                hintText: "Pilih Tambak",
-                prefixIcon: Icon(Icons.location_on_outlined),
-                items: [
-                  AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
-                ],
-                value: -1,
+              Obx(
+                () => AppDropdown(
+                  hintText: "Pilih Tambak",
+                  prefixIcon: Icon(Icons.location_on_outlined),
+                  items: controller.farms
+                      .map(
+                        (element) => AppDropdownItem(
+                            text: element.name,
+                            value: int.parse('${element.id}')),
+                      )
+                      .toList(),
+                  value: controller.farmId.value,
+                  onChanged: (e) {
+                    controller.farmId.value = e!;
+                  },
+                ),
               ),
               SizedBox(height: 12),
               Row(
@@ -185,3 +204,5 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
+
+
