@@ -73,7 +73,7 @@ class _KontrolPageState extends State<KontrolPage> {
             children: [
               AppDropdown(
                 hintText: "Pilih Tambak",
-                prefixIcon: Icon(Icons.location_on_outlined),
+                // prefixIcon: Icon(Icons.location_on_outlined),
                 items: [
                   AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
                   AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),

@@ -66,7 +66,7 @@ class _DashboardPageState extends State<DashboardPage> {
               Obx(
                 () => AppDropdown(
                   hintText: "Pilih Tambak",
-                  prefixIcon: Icon(Icons.location_on_outlined),
+                  prefixIcon: Icons.location_on_outlined,
                   items: controller.farms
                       .map(
                         (element) => AppDropdownItem(
@@ -90,6 +90,9 @@ class _DashboardPageState extends State<DashboardPage> {
                   SizedBox(width: 12),
                   Expanded(
                     child: AppDropdown(
+                      onChanged: (e) {
+                        print(e);
+                      },
                       hintText: "Pilih Kolam",
                       items: [
                         AppDropdownItem(
@@ -204,5 +207,3 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
-
-

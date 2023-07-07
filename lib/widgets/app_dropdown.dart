@@ -20,7 +20,7 @@ class AppDropdown extends StatefulWidget {
   final List<AppDropdownItem> items;
   final int value;
   final void Function(int?)? onChanged;
-  final Widget? prefixIcon;
+  final IconData? prefixIcon;
   final String? hintText;
 
   const AppDropdown({
@@ -41,16 +41,9 @@ class _AppDropdownState extends State<AppDropdown> {
   int? value;
   final _key = GlobalKey();
 
-  Size? size;
-
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        size = _key.currentContext!.size;
-      });
-    });
   }
 
   @override
@@ -63,29 +56,92 @@ class _AppDropdownState extends State<AppDropdown> {
       iconStyleData: IconStyleData(
         iconSize: 1,
       ),
-      decoration: InputDecoration(
-        constraints: BoxConstraints(maxWidth: 100.w),
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: Icon(
-          Icons.arrow_drop_down,
-          size: 22,
+      customButton: Container(
+        width: 100.w,
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide.none,
-        ),
-        isDense: true,
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 12,
-          vertical: 12,
-        ),
-        filled: true,
-        fillColor: Colors.white,
-        hintText: widget.hintText,
-        hintStyle: body5TextStyle(
-          color: ColorConstants.slate[400],
+        child: Row(
+          children: [
+            widget.prefixIcon != null
+                ? Icon(
+                    widget.prefixIcon,
+                    size: 18,
+                    color: ColorConstants.slate[600],
+                  )
+                : Container(),
+            SizedBox(width: 10),
+            Expanded(
+              child: Builder(
+                builder: (context) {
+                  var isValid = true;
+                  if (value == null) {
+                    isValid = false;
+                  }
+                  if (value == -1) {
+                    isValid = false;
+                  }
+                  if (widget.items
+                          .indexWhere((element) => element.value == value) ==
+                      -1) {
+                    isValid = false;
+                  }
+
+                  return Text(
+                    isValid
+                        ? widget.items
+                            .firstWhere((element) => element.value == value)
+                            .text
+                        : widget.hintText ?? "",
+                    style: body5TextStyle(
+                      weight: isValid ? FontWeight.w500 : FontWeight.normal,
+                      color: isValid
+                          ? ColorConstants.slate[800]
+                          : ColorConstants.slate[500],
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  );
+                },
+              ),
+            ),
+            SizedBox(width: 10),
+            Icon(
+              Icons.keyboard_arrow_down,
+              size: 18,
+              color: ColorConstants.slate[600],
+            ),
+          ],
         ),
       ),
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.zero,
+        border: InputBorder.none,
+      ),
+      // decoration: InputDecoration(
+      //   constraints: BoxConstraints(maxWidth: 100.w),
+      //   prefixIcon: widget.prefixIcon,
+      //   suffixIcon: Icon(
+      //     Icons.arrow_drop_down,
+      //     size: 22,
+      //   ),
+      //   border: OutlineInputBorder(
+      //     borderRadius: BorderRadius.circular(10),
+      //     borderSide: BorderSide.none,
+      //   ),
+      //   isDense: true,
+      //   contentPadding: EdgeInsets.symmetric(
+      //     horizontal: 12,
+      //     vertical: 12,
+      //   ),
+      //   filled: true,
+      //   fillColor: Colors.white,
+      //   hintText: widget.hintText,
+      //   hintStyle: body5TextStyle(
+      //     color: ColorConstants.slate[400],
+      //   ),
+      // ),
       hint: widget.hintText != null
           ? SizedBox(
               width: 100.w,
@@ -114,8 +170,7 @@ class _AppDropdownState extends State<AppDropdown> {
         }
       },
       dropdownStyleData: DropdownStyleData(
-        width: size?.width ?? 50,
-        offset: Offset(widget.prefixIcon == null ? -10 : -45, -15),
+        offset: Offset(0, -8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         ),
