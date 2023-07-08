@@ -67,13 +67,38 @@ class _DashboardPageState extends State<DashboardPage> {
                 () => AppDropdown(
                   hintText: "Pilih Tambak",
                   prefixIcon: Icons.location_on_outlined,
-                  items: controller.farms
-                      .map(
-                        (element) => AppDropdownItem(
-                            text: element.name,
-                            value: int.parse('${element.id}')),
-                      )
-                      .toList(),
+                  items: [
+                    ...controller.farms
+                        .map(
+                          (element) => AppDropdownItem(
+                              text: element.name,
+                              value: int.parse('${element.id}')),
+                        )
+                        .toList(),
+                    AppDropdownItem(
+                      text: "",
+                      value: -1,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.add,
+                              size: 18,
+                              color: ColorConstants.primary[500],
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              "Tambah Data Tambak",
+                              style: body5TextStyle(
+                                color: ColorConstants.primary[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                   value: controller.farmId.value,
                   onChanged: (e) {
                     controller.farmId.value = e!;
@@ -101,6 +126,29 @@ class _DashboardPageState extends State<DashboardPage> {
                             text: 'Tambak 2 - Fadli Farm', value: 1),
                         AppDropdownItem(
                             text: 'Tambak 2 - Fadli Farm', value: 2),
+                        AppDropdownItem(
+                          text: "",
+                          value: -1,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.add,
+                                  size: 18,
+                                  color: ColorConstants.primary[500],
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  "Tambah Kolam",
+                                  style: body5TextStyle(
+                                    color: ColorConstants.primary[500],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                       value: -1,
                     ),
@@ -125,6 +173,29 @@ class _DashboardPageState extends State<DashboardPage> {
                             text: 'Tambak 2 - Fadli Farm', value: 1),
                         AppDropdownItem(
                             text: 'Tambak 2 - Fadli Farm', value: 2),
+                        AppDropdownItem(
+                          text: "",
+                          value: -1,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.add,
+                                  size: 18,
+                                  color: ColorConstants.primary[500],
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  "Tambah Kolam",
+                                  style: body5TextStyle(
+                                    color: ColorConstants.primary[500],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                       value: -1,
                     ),

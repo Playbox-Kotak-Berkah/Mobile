@@ -8,10 +8,12 @@ import 'package:sizer/sizer.dart';
 class AppDropdownItem {
   final String text;
   final int value;
+  final Widget? child;
 
   AppDropdownItem({
     required this.text,
     required this.value,
+    this.child,
   });
 }
 
@@ -179,11 +181,12 @@ class _AppDropdownState extends State<AppDropdown> {
           .map(
             (e) => DropdownMenuItem(
               value: e.value,
-              child: Text(
-                e.text,
-                style: body5TextStyle(),
-                overflow: TextOverflow.ellipsis,
-              ),
+              child: e.child ??
+                  Text(
+                    e.text,
+                    style: body5TextStyle(),
+                    overflow: TextOverflow.ellipsis,
+                  ),
             ),
           )
           .toList(),
