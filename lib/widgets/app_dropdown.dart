@@ -24,6 +24,7 @@ class AppDropdown extends StatefulWidget {
   final void Function(int?)? onChanged;
   final IconData? prefixIcon;
   final String? hintText;
+  final bool isDisabled;
 
   const AppDropdown({
     super.key,
@@ -33,6 +34,7 @@ class AppDropdown extends StatefulWidget {
     this.onChanged,
     this.prefixIcon,
     this.hintText,
+    this.isDisabled = false,
   });
 
   @override
@@ -62,8 +64,13 @@ class _AppDropdownState extends State<AppDropdown> {
         width: 100.w,
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: widget.isDisabled ? ColorConstants.slate[200] : Colors.white,
           borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: widget.isDisabled
+                ? ColorConstants.slate[300]!
+                : ColorConstants.slate[200]!,
+          ),
         ),
         child: Row(
           children: [
@@ -121,29 +128,6 @@ class _AppDropdownState extends State<AppDropdown> {
         contentPadding: EdgeInsets.zero,
         border: InputBorder.none,
       ),
-      // decoration: InputDecoration(
-      //   constraints: BoxConstraints(maxWidth: 100.w),
-      //   prefixIcon: widget.prefixIcon,
-      //   suffixIcon: Icon(
-      //     Icons.arrow_drop_down,
-      //     size: 22,
-      //   ),
-      //   border: OutlineInputBorder(
-      //     borderRadius: BorderRadius.circular(10),
-      //     borderSide: BorderSide.none,
-      //   ),
-      //   isDense: true,
-      //   contentPadding: EdgeInsets.symmetric(
-      //     horizontal: 12,
-      //     vertical: 12,
-      //   ),
-      //   filled: true,
-      //   fillColor: Colors.white,
-      //   hintText: widget.hintText,
-      //   hintStyle: body5TextStyle(
-      //     color: ColorConstants.slate[400],
-      //   ),
-      // ),
       hint: widget.hintText != null
           ? SizedBox(
               width: 100.w,
@@ -161,16 +145,18 @@ class _AppDropdownState extends State<AppDropdown> {
               ),
             )
           : null,
-      onChanged: (e) {
-        setState(() {
-          if (e != null) {
-            value = e;
-          }
-        });
-        if (widget.onChanged != null) {
-          widget.onChanged!(e);
-        }
-      },
+      onChanged: !widget.isDisabled
+          ? (int? e) {
+              setState(() {
+                if (e != null) {
+                  value = e;
+                }
+              });
+              if (widget.onChanged != null) {
+                widget.onChanged!(e);
+              }
+            }
+          : null,
       dropdownStyleData: DropdownStyleData(
         offset: Offset(0, -8),
         decoration: BoxDecoration(

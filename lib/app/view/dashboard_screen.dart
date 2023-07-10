@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
 import 'package:playbox/partials/dashboard/dashboard_appbar.dart';
+import 'package:playbox/partials/dashboard/dashboard_selector.dart';
 import 'package:playbox/partials/dashboard/do_card.dart';
 import 'package:playbox/partials/dashboard/ph_card.dart';
 import 'package:playbox/partials/dashboard/salinity_card.dart';
@@ -63,145 +64,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 textAlign: TextAlign.justify,
               ),
               SizedBox(height: 16),
-              Obx(
-                () => AppDropdown(
-                  hintText: "Pilih Tambak",
-                  prefixIcon: Icons.location_on_outlined,
-                  items: [
-                    ...controller.farms
-                        .map(
-                          (element) => AppDropdownItem(
-                              text: element.name,
-                              value: int.parse('${element.id}')),
-                        )
-                        .toList(),
-                    AppDropdownItem(
-                      text: "",
-                      value: -1,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 18,
-                              color: ColorConstants.primary[500],
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              "Tambah Data Tambak",
-                              style: body5TextStyle(
-                                color: ColorConstants.primary[500],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                  value: controller.farmId.value,
-                  onChanged: (e) {
-                    controller.farmId.value = e!;
-                  },
-                ),
-              ),
-              SizedBox(height: 12),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30.w,
-                    child: Text("Kolam yang Dipantau"),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: AppDropdown(
-                      onChanged: (e) {
-                        print(e);
-                      },
-                      hintText: "Pilih Kolam",
-                      items: [
-                        AppDropdownItem(
-                            text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                        AppDropdownItem(
-                            text: 'Tambak 2 - Fadli Farm', value: 1),
-                        AppDropdownItem(
-                            text: 'Tambak 2 - Fadli Farm', value: 2),
-                        AppDropdownItem(
-                          text: "",
-                          value: -1,
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.add,
-                                  size: 18,
-                                  color: ColorConstants.primary[500],
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  "Tambah Kolam",
-                                  style: body5TextStyle(
-                                    color: ColorConstants.primary[500],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                      value: -1,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30.w,
-                    child: Text("Pilih Siklus Kolam (Harian)"),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: AppDropdown(
-                      hintText: "Tanggal",
-                      items: [
-                        AppDropdownItem(
-                            text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                        AppDropdownItem(
-                            text: 'Tambak 2 - Fadli Farm', value: 1),
-                        AppDropdownItem(
-                            text: 'Tambak 2 - Fadli Farm', value: 2),
-                        AppDropdownItem(
-                          text: "",
-                          value: -1,
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.add,
-                                  size: 18,
-                                  color: ColorConstants.primary[500],
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  "Tambah Kolam",
-                                  style: body5TextStyle(
-                                    color: ColorConstants.primary[500],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                      value: -1,
-                    ),
-                  ),
-                ],
-              ),
+              DashboardSelector(),
               SizedBox(height: 20),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),

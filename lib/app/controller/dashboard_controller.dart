@@ -19,6 +19,8 @@ class DashboardController extends GetxController {
   }
 
   RxInt farmId = (-1).obs;
+  RxInt pondId = (-1).obs;
+  RxInt cycleId = (-1).obs;
 
   @override
   void onInit() {
