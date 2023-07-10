@@ -1,5 +1,6 @@
 import 'package:playbox/app/models/farm/farm_model.dart';
 import 'package:playbox/app/models/login/login_model.dart';
+import 'package:playbox/app/models/pond/pond_model.dart';
 import 'package:playbox/app/models/profile/profile_model.dart';
 import 'package:playbox/app/models/register/register_model.dart';
 
@@ -14,6 +15,8 @@ abstract class ModelFactory {
       return ProfileModel.fromJson(json);
     } else if (strType == (FarmModel).toString()) {
       return FarmModel.fromJson(json);
+    } else if (strType == (PondModel).toString()) {
+      return PondModel.fromJson(json);
     } else {
       throw UnimplementedError();
     }

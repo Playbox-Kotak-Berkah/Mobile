@@ -46,33 +46,49 @@ class AppTextfield extends StatelessWidget {
           ),
         ),
         SizedBox(height: 6),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: TextFormField(
-            decoration: InputDecoration(
-              hintText: placeholder,
-              filled: true,
-              // fillColor: ColorConstants.slate[100],
-              fillColor: ColorConstants.slate[50],
-              prefixIcon: prefixIcon,
-              hintStyle: body5TextStyle(
-                color: ColorConstants.slate[400],
-              ),
-              prefix: prefix,
-              border: InputBorder.none,
+        TextFormField(
+          decoration: InputDecoration(
+            hintText: placeholder,
+            prefixIcon: prefixIcon,
+            hintStyle: body5TextStyle(
+              color: ColorConstants.slate[400],
             ),
-            textAlignVertical: prefixIcon != null
-                ? TextAlignVertical.center
-                : TextAlignVertical.top,
-            controller: controller,
-            style: body5TextStyle(weight: FontWeight.w500),
-            onChanged: onChange,
-            validator: validator,
-            keyboardType: keyboardType,
-            maxLines: maxLines,
-            obscureText: obscureText,
+            prefix: prefix,
           ),
+          textAlignVertical: prefixIcon != null
+              ? TextAlignVertical.center
+              : TextAlignVertical.top,
+          controller: controller,
+          style: body5TextStyle(weight: FontWeight.w500),
+          onChanged: onChange,
+          validator: validator,
+          keyboardType: keyboardType,
+          maxLines: maxLines,
+          obscureText: obscureText,
         ),
+        // ClipRRect(
+        //   borderRadius: BorderRadius.circular(10),
+        //   child: TextFormField(
+        //     decoration: InputDecoration(
+        //       hintText: placeholder,
+        //       prefixIcon: prefixIcon,
+        //       hintStyle: body5TextStyle(
+        //         color: ColorConstants.slate[400],
+        //       ),
+        //       prefix: prefix,
+        //     ),
+        //     textAlignVertical: prefixIcon != null
+        //         ? TextAlignVertical.center
+        //         : TextAlignVertical.top,
+        //     controller: controller,
+        //     style: body5TextStyle(weight: FontWeight.w500),
+        //     onChanged: onChange,
+        //     validator: validator,
+        //     keyboardType: keyboardType,
+        //     maxLines: maxLines,
+        //     obscureText: obscureText,
+        //   ),
+        // ),
       ],
     );
   }

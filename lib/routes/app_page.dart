@@ -47,7 +47,10 @@ List<GetPage<dynamic>> appPage() {
     GetPage(
       name: AppRoute.kontrol,
       page: () => KontrolPage(),
-      binding: KontrolBinding(),
+      bindings: [
+        KontrolBinding(),
+        DashboardBinding(),
+      ],
     ),
     GetPage(
       name: AppRoute.profile,

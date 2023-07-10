@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:sizer/sizer.dart';
@@ -48,6 +49,7 @@ class _AppDropdownState extends State<AppDropdown> {
   @override
   void initState() {
     super.initState();
+    value = widget.value;
   }
 
   @override
@@ -60,6 +62,7 @@ class _AppDropdownState extends State<AppDropdown> {
       iconStyleData: IconStyleData(
         iconSize: 1,
       ),
+      value: value,
       customButton: Container(
         width: 100.w,
         padding: EdgeInsets.all(12),
@@ -167,6 +170,7 @@ class _AppDropdownState extends State<AppDropdown> {
           .map(
             (e) => DropdownMenuItem(
               value: e.value,
+              onTap: null,
               child: e.child ??
                   Text(
                     e.text,

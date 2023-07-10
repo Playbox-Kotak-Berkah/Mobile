@@ -37,6 +37,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                 value: -1,
                 child: TextButton(
                   onPressed: () {
+                    Get.back();
                     showDialog(
                       context: context,
                       builder: (context) => FarmDialog(),
@@ -62,9 +63,13 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                 ),
               ),
             ],
-            value: controller.farmId.value,
+            value: controller.selectedFarm.value == null
+                ? -1
+                : controller.selectedFarm.value!.id,
             onChanged: (e) {
-              controller.farmId.value = e!;
+              controller.selectedFarm.value =
+                  controller.farms.firstWhere((element) => element.id == e);
+              controller.getPond(e!);
             },
           ),
         ),
@@ -82,12 +87,17 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                   onChanged: (e) {
                     // asdas
                   },
-                  isDisabled: controller.farmId.value == -1 ? true : false,
+                  isDisabled:
+                      controller.selectedFarm.value == null ? true : false,
                   hintText: "Pilih Kolam",
                   items: [
-                    AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                    AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
-                    AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
+                    ...controller.ponds
+                        .map(
+                          (element) => AppDropdownItem(
+                              text: "Kolam ${element.name}",
+                              value: int.parse('${element.id}')),
+                        )
+                        .toList(),
                     AppDropdownItem(
                       text: "",
                       value: -1,

@@ -6,7 +6,7 @@ part 'farm_model.g.dart';
 
 @JsonSerializable()
 class FarmModel implements ModelFactory {
-  num id;
+  int id;
   String name;
 
   @JsonKey(name: "aqua_farmer")

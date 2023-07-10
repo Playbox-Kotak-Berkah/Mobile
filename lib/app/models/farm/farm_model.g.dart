@@ -10,7 +10,7 @@ FarmModel _$FarmModelFromJson(Map<String, dynamic> json) => FarmModel(
       farmer:
           ProfileModel.fromJson(json['aqua_farmer'] as Map<String, dynamic>),
       farmerId: json['aqua_farmer_id'] as String,
-      id: json['id'] as num,
+      id: json['id'] as int,
       name: json['name'] as String,
     );
 

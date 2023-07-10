@@ -32,7 +32,6 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(controller.farms);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(100.w, 80),
