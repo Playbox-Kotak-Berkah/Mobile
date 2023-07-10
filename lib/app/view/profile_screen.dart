@@ -5,6 +5,7 @@ import 'package:playbox/app/controller/profile_controller.dart';
 import 'package:playbox/partials/profile/about_profile.dart';
 import 'package:playbox/partials/profile/account_settings.dart';
 import 'package:playbox/partials/profile/help_center.dart';
+import 'package:playbox/services/api/api_utils.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
@@ -210,7 +211,7 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // TODO: Add Logout here
+                  ApiUtils.logout();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorConstants.error,

@@ -22,7 +22,7 @@ class ApiUtils {
     UserToken.clearToken();
     if (!Get.currentRoute.contains(AppRoute.splash)) {
       GlobalController controller = GlobalController.i;
-      // controller.user.value = null;
+      controller.profile.value = null;
       Get.offAllNamed(AppRoute.splash);
     }
   }

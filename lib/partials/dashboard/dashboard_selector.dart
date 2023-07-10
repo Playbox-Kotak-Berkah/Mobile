@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
+import 'package:playbox/partials/dashboard/farm_dialog.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
@@ -35,7 +36,12 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                 text: "",
                 value: -1,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => FarmDialog(),
+                    );
+                  },
                   child: Row(
                     children: [
                       Icon(
@@ -71,41 +77,43 @@ class _DashboardSelectorState extends State<DashboardSelector> {
             ),
             SizedBox(width: 12),
             Expanded(
-              child: AppDropdown(
-                onChanged: (e) {
-                  print(e);
-                },
-                isDisabled: true,
-                hintText: "Pilih Kolam",
-                items: [
-                  AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
-                  AppDropdownItem(
-                    text: "",
-                    value: -1,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.add,
-                            size: 18,
-                            color: ColorConstants.primary[500],
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            "Tambah Kolam",
-                            style: body5TextStyle(
+              child: Obx(
+                () => AppDropdown(
+                  onChanged: (e) {
+                    // asdas
+                  },
+                  isDisabled: controller.farmId.value == -1 ? true : false,
+                  hintText: "Pilih Kolam",
+                  items: [
+                    AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
+                    AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
+                    AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
+                    AppDropdownItem(
+                      text: "",
+                      value: -1,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.add,
+                              size: 18,
                               color: ColorConstants.primary[500],
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 8),
+                            Text(
+                              "Tambah Kolam",
+                              style: body5TextStyle(
+                                color: ColorConstants.primary[500],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-                value: -1,
+                  ],
+                  value: -1,
+                ),
               ),
             ),
           ],

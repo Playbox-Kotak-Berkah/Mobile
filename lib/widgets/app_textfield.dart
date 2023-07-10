@@ -52,12 +52,14 @@ class AppTextfield extends StatelessWidget {
             decoration: InputDecoration(
               hintText: placeholder,
               filled: true,
-              fillColor: ColorConstants.slate[100],
+              // fillColor: ColorConstants.slate[100],
+              fillColor: ColorConstants.slate[50],
               prefixIcon: prefixIcon,
               hintStyle: body5TextStyle(
                 color: ColorConstants.slate[400],
               ),
               prefix: prefix,
+              border: InputBorder.none,
             ),
             textAlignVertical: prefixIcon != null
                 ? TextAlignVertical.center
