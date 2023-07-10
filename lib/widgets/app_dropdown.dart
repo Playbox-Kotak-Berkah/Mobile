@@ -10,11 +10,13 @@ class AppDropdownItem {
   final String text;
   final int value;
   final Widget? child;
+  final bool enabled;
 
   AppDropdownItem({
     required this.text,
     required this.value,
     this.child,
+    this.enabled = true,
   });
 }
 
@@ -62,7 +64,6 @@ class _AppDropdownState extends State<AppDropdown> {
       iconStyleData: IconStyleData(
         iconSize: 1,
       ),
-      value: value,
       customButton: Container(
         width: 100.w,
         padding: EdgeInsets.all(12),
@@ -166,20 +167,36 @@ class _AppDropdownState extends State<AppDropdown> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      items: widget.items
-          .map(
-            (e) => DropdownMenuItem(
-              value: e.value,
-              onTap: null,
-              child: e.child ??
-                  Text(
-                    e.text,
-                    style: body5TextStyle(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-            ),
-          )
-          .toList(),
+      items: widget.items.isNotEmpty
+          ? widget.items
+              .map(
+                (e) => DropdownMenuItem(
+                  value: e.value,
+                  onTap: null,
+                  enabled: e.enabled,
+                  child: e.child ??
+                      Text(
+                        e.text,
+                        style: body5TextStyle(),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                ),
+              )
+              .toList()
+          : [
+              DropdownMenuItem<int>(
+                value: 1,
+                enabled: false,
+                child: Row(
+                  children: [
+                    Text(
+                      "Tidak ada data",
+                      style: body5TextStyle(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
     );
   }
 }

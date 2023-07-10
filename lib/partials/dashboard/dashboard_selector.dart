@@ -35,6 +35,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
               AppDropdownItem(
                 text: "",
                 value: -1,
+                enabled: false,
                 child: TextButton(
                   onPressed: () {
                     Get.back();
@@ -101,6 +102,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                     AppDropdownItem(
                       text: "",
                       value: -1,
+                      enabled: false,
                       child: TextButton(
                         onPressed: () {},
                         child: Row(
@@ -110,11 +112,12 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                               size: 18,
                               color: ColorConstants.primary[500],
                             ),
-                            SizedBox(width: 8),
+                            SizedBox(width: 4),
                             Text(
                               "Tambah Kolam",
                               style: body5TextStyle(
                                 color: ColorConstants.primary[500],
+                                weight: FontWeight.w500,
                               ),
                             ),
                           ],
@@ -156,7 +159,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                             size: 18,
                             color: ColorConstants.primary[500],
                           ),
-                          SizedBox(width: 8),
+                          SizedBox(width: 4),
                           Text(
                             "Tambah Kolam",
                             style: body5TextStyle(

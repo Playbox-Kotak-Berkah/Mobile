@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
 import 'package:playbox/app/types/indicator_type.dart';
 import 'package:playbox/partials/kontrol/card_indicator.dart';
+import 'package:playbox/partials/kontrol/kontrol_selector.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
@@ -16,6 +17,14 @@ class KontrolPage extends StatefulWidget {
 }
 
 class _KontrolPageState extends State<KontrolPage> {
+  DashboardController dashboardController = DashboardController.i;
+
+  @override
+  void initState() {
+    super.initState();
+    dashboardController.getAllFarm();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,40 +81,7 @@ class _KontrolPageState extends State<KontrolPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              AppDropdown(
-                hintText: "Pilih Tambak",
-                // prefixIcon: Icon(Icons.location_on_outlined),
-                items: [
-                  AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
-                ],
-                value: -1,
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30.w,
-                    child: Text("Kolam yang Dipantau"),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: AppDropdown(
-                      hintText: "Pilih Kolam",
-                      items: [
-                        AppDropdownItem(
-                            text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                        AppDropdownItem(
-                            text: 'Tambak 2 - Fadli Farm', value: 1),
-                        AppDropdownItem(
-                            text: 'Tambak 2 - Fadli Farm', value: 2),
-                      ],
-                      value: -1,
-                    ),
-                  ),
-                ],
-              ),
+              KontrolSelector(),
               SizedBox(height: 20),
               Row(
                 children: [

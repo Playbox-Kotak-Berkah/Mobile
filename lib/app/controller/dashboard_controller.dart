@@ -17,19 +17,25 @@ class DashboardController extends GetxController {
   RxInt cycleId = (-1).obs;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     getAllFarm();
   }
 
-  void getAllFarm() async {
+  Future getAllFarm() async {
     var response = await fetchMultipleData<FarmModel>(
       url: "/api/farmer/tambak/all-tambak",
       method: RequestMethod.GET,
     );
 
     if (response != null) {
-      farms.value = response.data ?? [];
+      var copyResponse = response.data?.asMap().entries.map((e) {
+        var copy = e.value;
+        copy.name = "Tambak ${e.key + 1} - ${copy.name}";
+        return copy;
+      }).toList();
+
+      farms.value = copyResponse ?? [];
     }
   }
 
