@@ -66,4 +66,28 @@ class DashboardController extends GetxController {
       Get.back();
     }
   }
+
+  void createPond(Map<String, String> data) async {
+    final farmId = selectedFarm.value?.id;
+    if (farmId == null) {
+      ApiUtils.showAlert("Please select farm first");
+      return;
+    }
+
+    var response = await fetchData<PondModel>(
+      url: "/api/farmer/$farmId/add-kolam",
+      method: RequestMethod.POST,
+      data: data,
+    );
+
+    if (response != null) {
+      ApiUtils.showAlert(
+        "Berhasil menambahkan kolam",
+        isSuccess: true,
+      );
+
+      getPond(farmId);
+      Get.back();
+    }
+  }
 }

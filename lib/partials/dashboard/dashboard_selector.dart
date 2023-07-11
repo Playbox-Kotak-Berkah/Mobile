@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
 import 'package:playbox/partials/dashboard/farm_dialog.dart';
+import 'package:playbox/partials/dashboard/pond_dialog.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
@@ -104,7 +105,13 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                       value: -1,
                       enabled: false,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.back();
+                          showDialog(
+                            context: context,
+                            builder: (context) => PondDialog(),
+                          );
+                        },
                         child: Row(
                           children: [
                             Icon(
