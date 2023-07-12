@@ -3,6 +3,7 @@ import 'package:playbox/app/models/product/product_model.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/format_currency.dart';
 import 'package:playbox/utils/text_styles.dart';
+import 'package:sizer/sizer.dart';
 
 class CardSeller extends StatelessWidget {
   final ProductModel data;
@@ -46,10 +47,8 @@ class CardSeller extends StatelessWidget {
           SizedBox(height: 10),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.symmetric(
-                vertical: 4,
-              ),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              visualDensity: VisualDensity.compact,
               side: BorderSide(
                 width: 1,
                 color: ColorConstants.primary[500]!,

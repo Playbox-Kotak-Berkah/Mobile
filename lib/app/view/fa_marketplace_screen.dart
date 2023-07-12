@@ -84,13 +84,13 @@ class FarmerMarketplacePage extends GetView<FarmerMarketplaceController> {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(height: 10),
+              // SizedBox(height: 10),
               SwitchUser(isFarmer: true),
-              SizedBox(height: 16),
+              SizedBox(height: 12),
               CardUser(),
-              SizedBox(height: 20),
+              SizedBox(height: 12),
               StatusPenjualan(),
-              SizedBox(height: 20),
+              SizedBox(height: 12),
               ProdukSaya(),
               SizedBox(height: 40),
             ],
