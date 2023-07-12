@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:playbox/app/controller/dashboard_controller.dart';
+import 'package:playbox/app/controller/kontrol_controller.dart';
+import 'package:playbox/utils/color_constants.dart';
+import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
 import 'package:sizer/sizer.dart';
 
@@ -13,7 +14,7 @@ class KontrolSelector extends StatefulWidget {
 }
 
 class _KontrolSelectorState extends State<KontrolSelector> {
-  DashboardController dashboardController = DashboardController.i;
+  KontrolController controller = KontrolController.i;
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +22,25 @@ class _KontrolSelectorState extends State<KontrolSelector> {
       children: [
         Obx(
           () => AppDropdown(
-            hintText: "Pilih Tambak",
-            prefixIcon: Icons.location_on_outlined,
-            items: [
-              ...dashboardController.farms
-                  .map(
-                    (element) => AppDropdownItem(
-                        text: element.name, value: int.parse('${element.id}')),
-                  )
-                  .toList(),
-            ],
-            value: -1,
-          ),
+              hintText: "Pilih Tambak",
+              prefixIcon: Icons.location_on_outlined,
+              items: [
+                ...controller.farms
+                    .map(
+                      (element) => AppDropdownItem(
+                          text: element.name,
+                          value: int.parse('${element.id}')),
+                    )
+                    .toList(),
+              ],
+              value: controller.selectedFarm.value == null
+                  ? null
+                  : controller.selectedFarm.value!.id,
+              onChanged: (e) {
+                controller.selectedFarm.value =
+                    controller.farms.firstWhere((element) => element.id == e);
+                controller.getPond(e!);
+              }),
         ),
         SizedBox(height: 16),
         Row(
@@ -43,14 +51,29 @@ class _KontrolSelectorState extends State<KontrolSelector> {
             ),
             SizedBox(width: 12),
             Expanded(
-              child: AppDropdown(
-                hintText: "Pilih Kolam",
-                items: [
-                  AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
-                ],
-                value: -1,
+              child: Obx(
+                () => AppDropdown(
+                  onChanged: (e) {
+                    controller.selectedPond.value = controller.ponds
+                        .firstWhere((element) => element.id == e);
+                    controller.getPond(e!);
+                  },
+                  isDisabled:
+                      controller.selectedFarm.value == null ? true : false,
+                  hintText: "Pilih Kolam",
+                  items: [
+                    ...controller.ponds
+                        .map(
+                          (element) => AppDropdownItem(
+                              text: "Kolam ${element.name}",
+                              value: int.parse('${element.id}')),
+                        )
+                        .toList(),
+                  ],
+                  value: controller.selectedPond.value == null
+                      ? -1
+                      : controller.selectedPond.value!.id,
+                ),
               ),
             ),
           ],

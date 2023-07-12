@@ -4,6 +4,6 @@ import 'package:playbox/app/controller/kontrol_controller.dart';
 class KontrolBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<KontrolController>(() => KontrolController());
+    Get.put<KontrolController>(KontrolController());
   }
 }

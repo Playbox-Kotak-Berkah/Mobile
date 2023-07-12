@@ -11,6 +11,7 @@ class DashboardController extends GetxController {
   RxList<PondModel> ponds = <PondModel>[].obs;
 
   Rxn<FarmModel> selectedFarm = Rxn<FarmModel>();
+  Rxn<PondModel> selectedPond = Rxn<PondModel>();
 
   RxInt farmId = (-1).obs;
   RxInt pondId = (-1).obs;
@@ -29,6 +30,9 @@ class DashboardController extends GetxController {
     );
 
     if (response != null) {
+      selectedPond.value = null;
+      ponds.value = <PondModel>[];
+
       var copyResponse = response.data?.asMap().entries.map((e) {
         var copy = e.value;
         copy.name = "Tambak ${e.key + 1} - ${copy.name}";
@@ -46,6 +50,8 @@ class DashboardController extends GetxController {
     );
 
     if (response != null) {
+      selectedPond.value = null;
+      ponds.value = <PondModel>[];
       ponds.value = response.data ?? [];
     }
   }

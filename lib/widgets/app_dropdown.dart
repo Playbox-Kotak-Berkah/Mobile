@@ -23,11 +23,12 @@ class AppDropdownItem {
 class AppDropdown extends StatefulWidget {
   final String? label;
   final List<AppDropdownItem> items;
-  final int value;
+  final int? value;
   final void Function(int?)? onChanged;
   final IconData? prefixIcon;
   final String? hintText;
   final bool isDisabled;
+  final String p;
 
   const AppDropdown({
     super.key,
@@ -38,6 +39,7 @@ class AppDropdown extends StatefulWidget {
     this.prefixIcon,
     this.hintText,
     this.isDisabled = false,
+    this.p = "",
   });
 
   @override
@@ -64,6 +66,7 @@ class _AppDropdownState extends State<AppDropdown> {
       iconStyleData: IconStyleData(
         iconSize: 1,
       ),
+      value: widget.value,
       customButton: Container(
         width: 100.w,
         padding: EdgeInsets.all(12),
@@ -167,10 +170,25 @@ class _AppDropdownState extends State<AppDropdown> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
+      // items: widget.items
+      //     .map(
+      //       (e) => DropdownMenuItem<int>(
+      //         value: e.value,
+      //         onTap: null,
+      //         enabled: e.enabled,
+      //         child: e.child ??
+      //             Text(
+      //               e.text,
+      //               style: body5TextStyle(),
+      //               overflow: TextOverflow.ellipsis,
+      //             ),
+      //       ),
+      //     )
+      //     .toList(),
       items: widget.items.isNotEmpty
           ? widget.items
               .map(
-                (e) => DropdownMenuItem(
+                (e) => DropdownMenuItem<int>(
                   value: e.value,
                   onTap: null,
                   enabled: e.enabled,
@@ -185,7 +203,7 @@ class _AppDropdownState extends State<AppDropdown> {
               .toList()
           : [
               DropdownMenuItem<int>(
-                value: 1,
+                value: -1,
                 enabled: false,
                 child: Row(
                   children: [

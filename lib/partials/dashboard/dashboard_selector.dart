@@ -69,6 +69,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                 ? -1
                 : controller.selectedFarm.value!.id,
             onChanged: (e) {
+              // print(e);
               controller.selectedFarm.value =
                   controller.farms.firstWhere((element) => element.id == e);
               controller.getPond(e!);
@@ -84,10 +85,15 @@ class _DashboardSelectorState extends State<DashboardSelector> {
             ),
             SizedBox(width: 12),
             Expanded(
-              child: Obx(
-                () => AppDropdown(
+              child: Obx(() {
+                var value = controller.selectedPond.value == null
+                    ? -1
+                    : controller.selectedPond.value!.id;
+
+                return AppDropdown(
                   onChanged: (e) {
-                    // asdas
+                    controller.selectedPond.value = controller.ponds
+                        .firstWhere((element) => element.id == e);
                   },
                   isDisabled:
                       controller.selectedFarm.value == null ? true : false,
@@ -132,9 +138,11 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                       ),
                     ),
                   ],
-                  value: -1,
-                ),
-              ),
+                  value: controller.selectedPond.value == null
+                      ? -1
+                      : controller.selectedPond.value!.id,
+                );
+              }),
             ),
           ],
         ),
