@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/kontrol_controller.dart';
-import 'package:playbox/utils/color_constants.dart';
-import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_dropdown.dart';
 import 'package:sizer/sizer.dart';
 
@@ -56,7 +54,6 @@ class _KontrolSelectorState extends State<KontrolSelector> {
                   onChanged: (e) {
                     controller.selectedPond.value = controller.ponds
                         .firstWhere((element) => element.id == e);
-                    controller.getPond(e!);
                   },
                   isDisabled:
                       controller.selectedFarm.value == null ? true : false,
@@ -71,7 +68,7 @@ class _KontrolSelectorState extends State<KontrolSelector> {
                         .toList(),
                   ],
                   value: controller.selectedPond.value == null
-                      ? -1
+                      ? null
                       : controller.selectedPond.value!.id,
                 ),
               ),

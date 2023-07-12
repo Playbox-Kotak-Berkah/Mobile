@@ -86,10 +86,6 @@ class _DashboardSelectorState extends State<DashboardSelector> {
             SizedBox(width: 12),
             Expanded(
               child: Obx(() {
-                var value = controller.selectedPond.value == null
-                    ? -1
-                    : controller.selectedPond.value!.id;
-
                 return AppDropdown(
                   onChanged: (e) {
                     controller.selectedPond.value = controller.ponds

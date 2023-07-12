@@ -19,7 +19,7 @@ class KontrolController extends GetxController {
     super.onInit();
 
     DashboardController dashboardController = DashboardController.i;
-    farms.value = dashboardController.farms.value;
+    farms.value = dashboardController.farms;
     getAllFarm();
   }
 
@@ -47,6 +47,8 @@ class KontrolController extends GetxController {
     );
 
     if (response != null) {
+      selectedPond.value = null;
+      ponds.value = <PondModel>[];
       ponds.value = response.data ?? [];
     }
   }
