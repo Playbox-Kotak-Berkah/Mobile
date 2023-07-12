@@ -10,12 +10,17 @@ Future<ApiResponse<T>?> fetchData<T>({
   Object? data,
   bool? isAlert = true,
   Map<String, String>? header,
+  Map<String, dynamic>? queryParameters,
 }) async {
   try {
     final api = Api(isFormData: data is FormData);
 
-    Response request = await api.request(url,
-        data: data, options: Options(method: method.value));
+    Response request = await api.request(
+      url,
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(method: method.value),
+    );
 
     if (T == dynamic) {
       return request.data;
@@ -47,11 +52,16 @@ Future<ApiResponses<T>?> fetchMultipleData<T>({
   required RequestMethod method,
   Object? data,
   bool? isAlert = true,
+  Map<String, dynamic>? queryParameters,
 }) async {
   try {
     final api = Api();
-    Response request = await api.request(url,
-        data: data, options: Options(method: method.value));
+    Response request = await api.request(
+      url,
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(method: method.value),
+    );
 
     if (T == dynamic) {
       return request.data;

@@ -54,6 +54,7 @@ class _KontrolSelectorState extends State<KontrolSelector> {
                   onChanged: (e) {
                     controller.selectedPond.value = controller.ponds
                         .firstWhere((element) => element.id == e);
+                    controller.getDetailPond();
                   },
                   isDisabled:
                       controller.selectedFarm.value == null ? true : false,

@@ -8,6 +8,7 @@ ThemeData globalTheme() {
       backgroundColor: ColorConstants.slate[50],
       elevation: 0,
     ),
+    fontFamily: "Jakarta",
     primaryColor: ColorConstants.primary[500],
     scaffoldBackgroundColor: ColorConstants.slate[50],
     elevatedButtonTheme: ElevatedButtonThemeData(

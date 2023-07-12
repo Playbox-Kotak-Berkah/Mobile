@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
-import 'package:playbox/app/types/indicator_type.dart';
-import 'package:playbox/partials/kontrol/card_indicator.dart';
+import 'package:playbox/app/controller/kontrol_controller.dart';
+import 'package:playbox/partials/kontrol/kontrol_card.dart';
 import 'package:playbox/partials/kontrol/kontrol_selector.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
-import 'package:playbox/widgets/app_dropdown.dart';
+import 'package:playbox/widgets/no_data.dart';
 import 'package:sizer/sizer.dart';
 
 class KontrolPage extends StatefulWidget {
@@ -18,6 +20,7 @@ class KontrolPage extends StatefulWidget {
 
 class _KontrolPageState extends State<KontrolPage> {
   DashboardController dashboardController = DashboardController.i;
+  KontrolController controller = KontrolController.i;
 
   @override
   void initState() {
@@ -83,37 +86,13 @@ class _KontrolPageState extends State<KontrolPage> {
             children: [
               KontrolSelector(),
               SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: CardIndicator(
-                      type: Indicator.bulb,
-                      active: false,
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: CardIndicator(
-                      type: Indicator.fan,
-                      active: true,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: CardIndicator(
-                      type: Indicator.water,
-                      active: true,
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: Container(),
-                  ),
-                ],
+              Obx(
+                () => controller.selectedPond.value != null
+                    ? KontrolCard()
+                    : SizedBox(
+                        height: 50.h,
+                        child: NoData(),
+                      ),
               ),
             ],
           ),

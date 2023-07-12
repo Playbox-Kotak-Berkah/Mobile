@@ -74,7 +74,7 @@ class _CardIndicatorState extends State<CardIndicator> {
                       color: !widget.active
                           ? ColorConstants.slate[700]
                           : Colors.white,
-                      weight: FontWeight.bold,
+                      weight: FontWeight.w600,
                     ),
                   );
 
@@ -85,7 +85,7 @@ class _CardIndicatorState extends State<CardIndicator> {
                       color: !widget.active
                           ? ColorConstants.slate[700]
                           : Colors.white,
-                      weight: FontWeight.bold,
+                      weight: FontWeight.w600,
                     ),
                   );
 
@@ -96,12 +96,12 @@ class _CardIndicatorState extends State<CardIndicator> {
                       color: !widget.active
                           ? ColorConstants.slate[700]
                           : Colors.white,
-                      weight: FontWeight.bold,
+                      weight: FontWeight.w600,
                     ),
                   );
               }
             }),
-            SizedBox(height: 4),
+            SizedBox(height: 2),
             Text(
               widget.active ? "Hidup" : "Mati",
               style: body6TextStyle(

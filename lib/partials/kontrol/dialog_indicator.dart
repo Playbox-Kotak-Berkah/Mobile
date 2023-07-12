@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:playbox/app/controller/kontrol_controller.dart';
+import 'package:playbox/app/models/pond/pond_model.dart';
 import 'package:playbox/app/types/indicator_type.dart';
+import 'package:playbox/services/api/api_utils.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:sizer/sizer.dart';
@@ -10,7 +13,9 @@ import 'package:sizer/sizer.dart';
 class DialogIndicator extends StatelessWidget {
   final Indicator type;
   final bool active;
-  const DialogIndicator({
+  final KontrolController controller = KontrolController.i;
+
+  DialogIndicator({
     super.key,
     required this.type,
     required this.active,
@@ -74,9 +79,9 @@ class DialogIndicator extends StatelessWidget {
             Text(
               "$indicator dalam kondisi $kondisi,\nanda yakin akan $action?",
               textAlign: TextAlign.center,
-              style: body4TextStyle(
+              style: body5TextStyle(
                 color: ColorConstants.slate[700],
-                weight: FontWeight.w600,
+                weight: FontWeight.w500,
               ),
             ),
             SizedBox(height: 16),
@@ -93,7 +98,7 @@ class DialogIndicator extends StatelessWidget {
                     child: Text(
                       "Batal",
                       style: body5TextStyle(
-                        weight: FontWeight.bold,
+                        weight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -102,9 +107,24 @@ class DialogIndicator extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.back();
+                      if (controller.selectedPond.value == null) {
+                        ApiUtils.showAlert("Please select pond first");
+                        return;
+                      }
+                      PondModel selectedPond = controller.selectedPond.value!;
+                      controller.editState(
+                        water: type == Indicator.water
+                            ? !active
+                            : selectedPond.statusWater,
+                        bulb: type == Indicator.bulb
+                            ? !active
+                            : selectedPond.statusBulb,
+                        fan: type == Indicator.fan
+                            ? !active
+                            : selectedPond.statusFan,
+                      );
                     },
-                    child: Text("Batal"),
+                    child: Text("Ya"),
                   ),
                 ),
               ],
