@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:playbox/app/models/cycle/cycle_model.dart';
 import 'package:playbox/app/models/farm/farm_model.dart';
 import 'package:playbox/app/models/pond/pond_model.dart';
 import 'package:playbox/services/api/api_utils.dart';
@@ -9,9 +10,11 @@ class DashboardController extends GetxController {
   static DashboardController get i => Get.find();
   RxList<FarmModel> farms = <FarmModel>[].obs;
   RxList<PondModel> ponds = <PondModel>[].obs;
+  RxList<CycleModel> cycles = <CycleModel>[].obs;
 
   Rxn<FarmModel> selectedFarm = Rxn<FarmModel>();
   Rxn<PondModel> selectedPond = Rxn<PondModel>();
+  Rxn<CycleModel> selectedCycle = Rxn<CycleModel>();
 
   RxInt farmId = (-1).obs;
   RxInt pondId = (-1).obs;
@@ -94,6 +97,29 @@ class DashboardController extends GetxController {
 
       getPond(farmId);
       Get.back();
+    }
+  }
+
+  void getCycle() async {
+    if (selectedFarm.value == null) {
+      ApiUtils.showAlert("Please select farm frist");
+      return;
+    }
+    if (selectedPond.value == null) {
+      ApiUtils.showAlert("Please select pond first");
+      return;
+    }
+
+    var response = await fetchMultipleData<CycleModel>(
+      url:
+          "/api/farmer/${selectedFarm.value!.id}/${selectedPond.value!.id}/all-siklus",
+      method: RequestMethod.GET,
+    );
+
+    if (response != null) {
+      selectedCycle.value = null;
+      cycles.value = <CycleModel>[];
+      cycles.value = response.data!;
     }
   }
 }

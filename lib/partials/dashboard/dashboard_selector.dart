@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
+import 'package:playbox/partials/dashboard/cycle_dialog.dart';
 import 'package:playbox/partials/dashboard/farm_dialog.dart';
 import 'package:playbox/partials/dashboard/pond_dialog.dart';
 import 'package:playbox/utils/color_constants.dart';
@@ -90,6 +91,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                   onChanged: (e) {
                     controller.selectedPond.value = controller.ponds
                         .firstWhere((element) => element.id == e);
+                    controller.getCycle();
                   },
                   isDisabled:
                       controller.selectedFarm.value == null ? true : false,
@@ -151,38 +153,59 @@ class _DashboardSelectorState extends State<DashboardSelector> {
             ),
             SizedBox(width: 12),
             Expanded(
-              child: AppDropdown(
-                isDisabled: true,
-                hintText: "Pilih Siklus",
-                items: [
-                  AppDropdownItem(text: 'Tambak 1 - Ben\'s Farm', value: 0),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 1),
-                  AppDropdownItem(text: 'Tambak 2 - Fadli Farm', value: 2),
-                  AppDropdownItem(
-                    text: "",
-                    value: -1,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.add,
-                            size: 18,
-                            color: ColorConstants.primary[500],
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            "Tambah Kolam",
-                            style: body5TextStyle(
+              child: Obx(
+                () => AppDropdown(
+                  onChanged: (e) {
+                    controller.selectedCycle.value = controller.cycles
+                        .firstWhere((element) => element.id == e);
+                  },
+                  isDisabled:
+                      controller.selectedPond.value == null ? true : false,
+                  hintText: "Pilih Siklus",
+                  items: [
+                    ...controller.cycles
+                        .map(
+                          (element) => AppDropdownItem(
+                              text: element.name,
+                              value: int.parse('${element.id}')),
+                        )
+                        .toList(),
+                    AppDropdownItem(
+                      enabled: false,
+                      text: "",
+                      value: -1,
+                      child: TextButton(
+                        onPressed: () {
+                          Get.back();
+                          showDialog(
+                            context: context,
+                            builder: (context) => CycleDialog(),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.add,
+                              size: 18,
                               color: ColorConstants.primary[500],
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 4),
+                            Text(
+                              "Tambah Siklus",
+                              style: body5TextStyle(
+                                weight: FontWeight.w500,
+                                color: ColorConstants.primary[500],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-                value: -1,
+                  ],
+                  value: controller.selectedCycle.value == null
+                      ? -1
+                      : controller.selectedCycle.value!.id,
+                ),
               ),
             ),
           ],

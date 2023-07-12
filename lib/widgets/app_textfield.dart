@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 
@@ -17,6 +16,8 @@ class AppTextfield extends StatelessWidget {
   Widget? prefixIcon;
   Widget? prefix;
   bool obscureText = false;
+  final void Function()? ontap;
+  final bool readOnly;
 
   AppTextfield({
     super.key,
@@ -31,6 +32,8 @@ class AppTextfield extends StatelessWidget {
     this.prefixIcon,
     this.prefix,
     this.obscureText = false,
+    this.ontap,
+    this.readOnly = false,
   });
 
   @override
@@ -47,6 +50,8 @@ class AppTextfield extends StatelessWidget {
         ),
         SizedBox(height: 6),
         TextFormField(
+          readOnly: readOnly,
+          onTap: ontap,
           decoration: InputDecoration(
             hintText: placeholder,
             prefixIcon: prefixIcon,
