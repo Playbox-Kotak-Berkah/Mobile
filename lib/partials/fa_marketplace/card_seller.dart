@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:playbox/app/models/product/product_model.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/format_currency.dart';
 import 'package:playbox/utils/text_styles.dart';
-import 'package:sizer/sizer.dart';
 
 class CardSeller extends StatelessWidget {
   final ProductModel data;
+
   const CardSeller({
     super.key,
     required this.data,
@@ -25,10 +26,22 @@ class CardSeller extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: Image.asset(
-                data.image,
+              child: Image.network(
+                data.photo,
                 width: 110,
                 fit: BoxFit.cover,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
               ),
             ),
           ),

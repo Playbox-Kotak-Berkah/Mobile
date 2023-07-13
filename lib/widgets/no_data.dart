@@ -5,7 +5,13 @@ import 'package:playbox/utils/text_styles.dart';
 
 class NoData extends StatelessWidget {
   final void Function()? onPressed;
-  const NoData({super.key, this.onPressed});
+  final String text;
+
+  const NoData({
+    super.key,
+    this.onPressed,
+    this.text = "Tambah Data",
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,7 @@ class NoData extends StatelessWidget {
         onPressed != null
             ? ElevatedButton(
                 onPressed: () {},
-                child: Text("Tambah Data"),
+                child: Text(text),
               )
             : Container(),
       ],

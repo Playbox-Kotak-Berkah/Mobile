@@ -28,42 +28,42 @@ class Recommendation extends GetView<UserMarketplaceController> {
           physics: NeverScrollableScrollPhysics(),
           childAspectRatio: 0.73,
           children: [
-            CardProduct(
-              data: ProductModel(
-                image: "assets/images/udang_dogol.png",
-                name: "Udang Dogol",
-                price: 12500,
-                rating: 4.7,
-                sold: 120,
-              ),
-            ),
-            CardProduct(
-              data: ProductModel(
-                image: "assets/images/udang_dogol.png",
-                name: "Udang Dogol",
-                price: 12500,
-                rating: 4.7,
-                sold: 120,
-              ),
-            ),
-            CardProduct(
-              data: ProductModel(
-                image: "assets/images/udang_dogol.png",
-                name: "Udang Dogol",
-                price: 12500,
-                rating: 4.7,
-                sold: 120,
-              ),
-            ),
-            CardProduct(
-              data: ProductModel(
-                image: "assets/images/udang_dogol.png",
-                name: "Udang Dogol",
-                price: 12500,
-                rating: 4.7,
-                sold: 120,
-              ),
-            ),
+            // CardProduct(
+            //   data: ProductModel(
+            //     image: "assets/images/udang_dogol.png",
+            //     name: "Udang Dogol",
+            //     price: 12500,
+            //     rating: 4.7,
+            //     sold: 120,
+            //   ),
+            // ),
+            // CardProduct(
+            //   data: ProductModel(
+            //     image: "assets/images/udang_dogol.png",
+            //     name: "Udang Dogol",
+            //     price: 12500,
+            //     rating: 4.7,
+            //     sold: 120,
+            //   ),
+            // ),
+            // CardProduct(
+            //   data: ProductModel(
+            //     image: "assets/images/udang_dogol.png",
+            //     name: "Udang Dogol",
+            //     price: 12500,
+            //     rating: 4.7,
+            //     sold: 120,
+            //   ),
+            // ),
+            // CardProduct(
+            //   data: ProductModel(
+            //     image: "assets/images/udang_dogol.png",
+            //     name: "Udang Dogol",
+            //     price: 12500,
+            //     rating: 4.7,
+            //     sold: 120,
+            //   ),
+            // ),
           ],
         ),
       ],

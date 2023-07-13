@@ -21,8 +21,8 @@ class CardProduct extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: Image.asset(
-                data.image,
+              child: Image.network(
+                data.photo,
                 width: 110,
                 fit: BoxFit.cover,
               ),

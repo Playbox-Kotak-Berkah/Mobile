@@ -2,6 +2,7 @@ import 'package:playbox/app/models/cycle/cycle_model.dart';
 import 'package:playbox/app/models/farm/farm_model.dart';
 import 'package:playbox/app/models/login/login_model.dart';
 import 'package:playbox/app/models/pond/pond_model.dart';
+import 'package:playbox/app/models/product/product_model.dart';
 import 'package:playbox/app/models/profile/profile_model.dart';
 import 'package:playbox/app/models/register/register_model.dart';
 
@@ -20,6 +21,8 @@ abstract class ModelFactory {
       return PondModel.fromJson(json);
     } else if (strType == (CycleModel).toString()) {
       return CycleModel.fromJson(json);
+    } else if (strType == (ProductModel).toString()) {
+      return ProductModel.fromJson(json);
     } else {
       throw UnimplementedError();
     }
