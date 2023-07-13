@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/fa_marketplace_controller.dart';
-import 'package:playbox/app/models/product/product_model.dart';
 import 'package:playbox/partials/fa_marketplace/card_seller.dart';
+import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/no_data.dart';
 import 'package:sizer/sizer.dart';
@@ -16,11 +16,28 @@ class ProdukSaya extends GetView<FarmerMarketplaceController> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          "Produk Saya",
-          style: body4TextStyle(
-            weight: FontWeight.bold,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "Produk Saya",
+              style: body4TextStyle(
+                weight: FontWeight.bold,
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: Text(
+                'Tambah Produk',
+                style: body6TextStyle(
+                  color: ColorConstants.primary[500],
+                  weight: FontWeight.w500,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ],
         ),
         SizedBox(height: 16),
         SizedBox(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:playbox/app/bindings/add_product_bindings.dart';
 import 'package:playbox/app/bindings/dashboard_bindings.dart';
 import 'package:playbox/app/bindings/fa_marketplace_bindings.dart';
 import 'package:playbox/app/bindings/kontrol_bindings.dart';
@@ -7,6 +8,7 @@ import 'package:playbox/app/bindings/onboarding_bindings.dart';
 import 'package:playbox/app/bindings/profile_bindings.dart';
 import 'package:playbox/app/bindings/register_bindings.dart';
 import 'package:playbox/app/bindings/u_marketplace_bindings.dart';
+import 'package:playbox/app/view/add_product_screen.dart';
 import 'package:playbox/app/view/dashboard_screen.dart';
 import 'package:playbox/app/view/fa_marketplace_screen.dart';
 import 'package:playbox/app/view/kontrol_screen.dart';
@@ -67,6 +69,11 @@ List<GetPage<dynamic>> appPage() {
       page: () => UserMarketplacePage(),
       binding: UserMarketplaceBinding(),
       transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoute.addProduct,
+      page: () => AddProductPage(),
+      binding: AddProductBinding(),
     ),
   ];
 }

@@ -37,4 +37,7 @@ class AppRoute {
   // Aqua Farmers
   static String farmerMarketplace = "/farmers/marketplace";
   static String customerMarketplace = "/customer/marketplace";
+
+  static String addProduct = "/farmers/add-product";
+  static String editProduct = "/farmers/edit-product";
 }
