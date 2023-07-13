@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/fa_marketplace_controller.dart';
 import 'package:playbox/partials/fa_marketplace/card_seller.dart';
+import 'package:playbox/routes/app_route.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/no_data.dart';
@@ -27,7 +28,9 @@ class ProdukSaya extends GetView<FarmerMarketplaceController> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(AppRoute.addProduct);
+              },
               child: Text(
                 'Tambah Produk',
                 style: body6TextStyle(
