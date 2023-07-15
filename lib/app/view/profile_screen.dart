@@ -5,6 +5,7 @@ import 'package:playbox/app/controller/profile_controller.dart';
 import 'package:playbox/partials/profile/about_profile.dart';
 import 'package:playbox/partials/profile/account_settings.dart';
 import 'package:playbox/partials/profile/help_center.dart';
+import 'package:playbox/routes/app_route.dart';
 import 'package:playbox/services/api/api_utils.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
@@ -40,12 +41,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     Text(
                       "Profile",
-                      style: h1TextStyle(
+                      style: h2TextStyle(
                         weight: FontWeight.bold,
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoute.profileEdit);
+                      },
                       child: Text(
                         "Edit my profile",
                         style: body5TextStyle(

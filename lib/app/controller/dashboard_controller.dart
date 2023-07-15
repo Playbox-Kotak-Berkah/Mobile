@@ -100,7 +100,7 @@ class DashboardController extends GetxController {
     }
   }
 
-  void getCycle() async {
+  void getAllCycle() async {
     if (selectedFarm.value == null) {
       ApiUtils.showAlert("Please select farm frist");
       return;
@@ -121,5 +121,26 @@ class DashboardController extends GetxController {
       cycles.value = <CycleModel>[];
       cycles.value = response.data!;
     }
+  }
+
+  void getLatestCycleDaily() async {
+    if (selectedFarm.value == null) {
+      ApiUtils.showAlert("Please select farm first");
+      return;
+    }
+    if (selectedPond.value == null) {
+      ApiUtils.showAlert("Please select pond first");
+      return;
+    }
+    if (selectedCycle.value == null) {
+      ApiUtils.showAlert("Please select cycle first");
+      return;
+    }
+
+    var response = await fetchData(
+      url:
+          "/api/farmer/${selectedCycle.value!.id}/${selectedPond.value!.id}/${selectedCycle.value!.id}/latest",
+      method: RequestMethod.GET,
+    );
   }
 }

@@ -64,13 +64,17 @@ class AppTextfield extends StatelessWidget {
               ? TextAlignVertical.center
               : TextAlignVertical.top,
           controller: controller,
-          style: body5TextStyle(weight: FontWeight.w500),
+          style: body5TextStyle(
+            weight: FontWeight.w500,
+            letterSpacing: obscureText ? 2.5 : null,
+          ),
           onChanged: onChange,
           validator: validator,
           keyboardType: keyboardType,
           maxLines: maxLines,
           obscureText: obscureText,
         ),
+
         // ClipRRect(
         //   borderRadius: BorderRadius.circular(10),
         //   child: TextFormField(

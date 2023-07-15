@@ -73,6 +73,8 @@ class _DashboardSelectorState extends State<DashboardSelector> {
               // print(e);
               controller.selectedFarm.value =
                   controller.farms.firstWhere((element) => element.id == e);
+              controller.selectedPond.value = null;
+              controller.selectedCycle.value = null;
               controller.getPond(e!);
             },
           ),
@@ -91,7 +93,8 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                   onChanged: (e) {
                     controller.selectedPond.value = controller.ponds
                         .firstWhere((element) => element.id == e);
-                    controller.getCycle();
+                    controller.getAllCycle();
+                    controller.selectedCycle.value = null;
                   },
                   isDisabled:
                       controller.selectedFarm.value == null ? true : false,
@@ -158,6 +161,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                   onChanged: (e) {
                     controller.selectedCycle.value = controller.cycles
                         .firstWhere((element) => element.id == e);
+                    // controller.getLatestCycleDaily();
                   },
                   isDisabled:
                       controller.selectedPond.value == null ? true : false,

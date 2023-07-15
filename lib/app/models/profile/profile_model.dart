@@ -12,6 +12,7 @@ class ProfileModel implements ModelFactory {
   String password;
   String CreatedAt;
   String UpdatedAt;
+  String picture;
 
   ProfileModel({
     required this.CreatedAt,
@@ -21,6 +22,7 @@ class ProfileModel implements ModelFactory {
     required this.name,
     required this.password,
     required this.phone,
+    required this.picture,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) =>

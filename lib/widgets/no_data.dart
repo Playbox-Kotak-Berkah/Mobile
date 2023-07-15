@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
+import 'package:sizer/sizer.dart';
 
 class NoData extends StatelessWidget {
   final void Function()? onPressed;
+  final String action;
   final String text;
 
   const NoData({
     super.key,
     this.onPressed,
-    this.text = "Tambah Data",
+    this.action = "Tambah Data",
+    this.text = "Tidak ada data ditemukan",
   });
 
   @override
@@ -24,19 +27,22 @@ class NoData extends StatelessWidget {
           "assets/icons/no_data.svg",
         ),
         SizedBox(height: 12),
-        Text(
-          "Tidak ada data ditemukan",
-          style: body4TextStyle(
-            color: ColorConstants.slate[700],
-            weight: FontWeight.bold,
+        SizedBox(
+          width: 65.w,
+          child: Text(
+            text,
+            style: body4TextStyle(
+              color: ColorConstants.slate[700],
+              weight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
         SizedBox(height: 12),
         onPressed != null
             ? ElevatedButton(
-                onPressed: () {},
-                child: Text(text),
+                onPressed: onPressed,
+                child: Text(action),
               )
             : Container(),
       ],
