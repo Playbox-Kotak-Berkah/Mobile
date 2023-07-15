@@ -13,7 +13,6 @@ import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/date_calculate.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
-import 'package:playbox/widgets/app_dropdown.dart';
 import 'package:playbox/widgets/no_data.dart';
 import 'package:sizer/sizer.dart';
 
@@ -42,7 +41,6 @@ class _DashboardPageState extends State<DashboardPage> {
         child: AppBar(
           automaticallyImplyLeading: false,
           elevation: 0,
-          backgroundColor: ColorConstants.slate[50],
           flexibleSpace: DashboardAppbar(),
         ),
       ),

@@ -183,23 +183,29 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Buy your membership!",
-                            style: body4TextStyle(
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoute.membership);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Buy your membership!",
+                              style: body4TextStyle(
+                                color: Colors.white,
+                                weight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(width: 4),
+                            Icon(
+                              Icons.chevron_right,
                               color: Colors.white,
                             ),
-                          ),
-                          SizedBox(width: 4),
-                          Icon(
-                            Icons.chevron_right,
-                            color: Colors.white,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],

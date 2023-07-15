@@ -5,12 +5,12 @@ import 'package:playbox/utils/text_styles.dart';
 ThemeData globalTheme() {
   return ThemeData(
     appBarTheme: AppBarTheme(
-      backgroundColor: ColorConstants.slate[50],
+      backgroundColor: ColorConstants.slate[25],
       elevation: 0,
     ),
     fontFamily: "Jakarta",
     primaryColor: ColorConstants.primary[500],
-    scaffoldBackgroundColor: ColorConstants.slate[50],
+    scaffoldBackgroundColor: ColorConstants.slate[25],
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,

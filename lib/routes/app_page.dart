@@ -13,6 +13,7 @@ import 'package:playbox/app/bindings/u_marketplace_bindings.dart';
 import 'package:playbox/app/view/add_product_screen.dart';
 import 'package:playbox/app/view/dashboard_screen.dart';
 import 'package:playbox/app/view/edit_product_screen.dart';
+import 'package:playbox/app/view/membership_screen.dart';
 import 'package:playbox/app/view/my_product_screen.dart';
 import 'package:playbox/app/view/edit_profile_screen.dart';
 import 'package:playbox/app/view/fa_marketplace_screen.dart';
@@ -103,6 +104,10 @@ List<GetPage<dynamic>> appPage() {
         FarmerMarketplaceBinding(),
         EditProductBinding(),
       ],
-    )
+    ),
+    GetPage(
+      name: AppRoute.membership,
+      page: () => MembershipPage(),
+    ),
   ];
 }
