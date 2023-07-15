@@ -39,5 +39,5 @@ class AppRoute {
   static String customerMarketplace = "/customer/marketplace";
 
   static String addProduct = "/farmers/product/add";
-  static String editProduct = "/farmers/product/edit";
+  static String yourProduct = "/farmers/product";
 }

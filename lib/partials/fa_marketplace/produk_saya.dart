@@ -29,7 +29,7 @@ class ProdukSaya extends GetView<FarmerMarketplaceController> {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(AppRoute.editProduct);
+                Get.toNamed(AppRoute.yourProduct);
               },
               child: Text(
                 'Edit Produk',

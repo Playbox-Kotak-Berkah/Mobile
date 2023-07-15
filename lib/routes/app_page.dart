@@ -90,8 +90,8 @@ List<GetPage<dynamic>> appPage() {
       ],
     ),
     GetPage(
-      name: AppRoute.editProduct,
-      page: () => EditProductPage(),
+      name: AppRoute.yourProduct,
+      page: () => YourProductPage(),
       binding: FarmerMarketplaceBinding(),
     ),
   ];

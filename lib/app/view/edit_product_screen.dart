@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/fa_marketplace_controller.dart';
 import 'package:playbox/partials/fa_marketplace/card_seller.dart';
@@ -10,14 +8,14 @@ import 'package:playbox/widgets/custom_appbar.dart';
 import 'package:playbox/widgets/no_data.dart';
 import 'package:sizer/sizer.dart';
 
-class EditProductPage extends StatefulWidget {
-  const EditProductPage({super.key});
+class YourProductPage extends StatefulWidget {
+  const YourProductPage({super.key});
 
   @override
-  State<EditProductPage> createState() => _EditProductPageState();
+  State<YourProductPage> createState() => _YourProductPageState();
 }
 
-class _EditProductPageState extends State<EditProductPage> {
+class _YourProductPageState extends State<YourProductPage> {
   FarmerMarketplaceController controller = FarmerMarketplaceController.i;
 
   @override
