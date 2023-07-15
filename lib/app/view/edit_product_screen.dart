@@ -151,7 +151,15 @@ class EditProductPage extends GetView<EditProductController> {
                 SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: controller.submit,
-                  child: Text("INPUT"),
+                  child: Text("EDIT"),
+                ),
+                SizedBox(height: 8),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorConstants.error,
+                  ),
+                  onPressed: controller.delete,
+                  child: Text("DELETE"),
                 ),
               ],
             ),

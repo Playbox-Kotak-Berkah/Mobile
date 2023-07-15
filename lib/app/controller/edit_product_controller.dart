@@ -98,4 +98,22 @@ class EditProductController extends GetxController {
       }
     }
   }
+
+  void delete() async {
+    final id = Get.parameters['id']!;
+    var response = await fetchData<ProductModel>(
+      url: "/api/market-farmer/delete/$id",
+      method: RequestMethod.DELETE,
+    );
+
+    if (response != null) {
+      FarmerMarketplaceController controller = FarmerMarketplaceController.i;
+      controller.getAllProduct();
+      ApiUtils.showAlert(
+        "Berhasil menghapus data",
+        isSuccess: true,
+      );
+      Get.back();
+    }
+  }
 }
