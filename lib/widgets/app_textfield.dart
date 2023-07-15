@@ -66,7 +66,6 @@ class AppTextfield extends StatelessWidget {
           controller: controller,
           style: body5TextStyle(
             weight: FontWeight.w500,
-            letterSpacing: obscureText ? 2.5 : null,
           ),
           onChanged: onChange,
           validator: validator,

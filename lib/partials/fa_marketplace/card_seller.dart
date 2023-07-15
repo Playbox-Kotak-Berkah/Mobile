@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:playbox/app/models/product/product_model.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/format_currency.dart';
@@ -7,10 +6,14 @@ import 'package:playbox/utils/text_styles.dart';
 
 class CardSeller extends StatelessWidget {
   final ProductModel data;
+  final void Function()? onPressed;
+  final String actionText;
 
   const CardSeller({
     super.key,
     required this.data,
+    this.onPressed,
+    this.actionText = "Naikkan Produk",
   });
 
   @override
@@ -45,6 +48,7 @@ class CardSeller extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 10),
           Text(
             data.name,
             style: body5TextStyle(
@@ -67,9 +71,9 @@ class CardSeller extends StatelessWidget {
                 color: ColorConstants.primary[500]!,
               ),
             ),
-            onPressed: () {},
+            onPressed: onPressed,
             child: Text(
-              "Naikkan Produk",
+              actionText,
               style: body6TextStyle(
                 color: ColorConstants.primary[500],
                 weight: FontWeight.w500,

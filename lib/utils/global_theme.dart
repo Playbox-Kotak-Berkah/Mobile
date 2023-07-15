@@ -36,7 +36,7 @@ ThemeData globalTheme() {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       isDense: true,
       errorStyle: TextStyle(
         fontSize: 11,

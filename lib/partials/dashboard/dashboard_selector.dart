@@ -84,7 +84,10 @@ class _DashboardSelectorState extends State<DashboardSelector> {
           children: [
             SizedBox(
               width: 30.w,
-              child: Text("Kolam yang Dipantau"),
+              child: Text(
+                "Kolam yang Dipantau",
+                style: body5TextStyle(),
+              ),
             ),
             SizedBox(width: 12),
             Expanded(
@@ -152,7 +155,10 @@ class _DashboardSelectorState extends State<DashboardSelector> {
           children: [
             SizedBox(
               width: 30.w,
-              child: Text("Pilih Siklus Kolam (Harian)"),
+              child: Text(
+                "Pilih Siklus Kolam (Harian)",
+                style: body5TextStyle(),
+              ),
             ),
             SizedBox(width: 12),
             Expanded(

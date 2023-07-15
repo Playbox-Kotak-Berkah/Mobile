@@ -31,7 +31,7 @@ class NoData extends StatelessWidget {
           width: 65.w,
           child: Text(
             text,
-            style: body4TextStyle(
+            style: body5TextStyle(
               color: ColorConstants.slate[700],
               weight: FontWeight.bold,
             ),

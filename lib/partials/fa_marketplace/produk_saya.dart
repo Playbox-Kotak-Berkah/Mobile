@@ -29,10 +29,10 @@ class ProdukSaya extends GetView<FarmerMarketplaceController> {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed(AppRoute.addProduct);
+                Get.toNamed(AppRoute.editProduct);
               },
               child: Text(
-                'Tambah Produk',
+                'Edit Produk',
                 style: body6TextStyle(
                   color: ColorConstants.primary[500],
                   weight: FontWeight.w500,
@@ -60,7 +60,7 @@ class ProdukSaya extends GetView<FarmerMarketplaceController> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   primary: true,
-                  childAspectRatio: 0.73,
+                  childAspectRatio: 0.67,
                   scrollDirection: Axis.vertical,
                   mainAxisSpacing: 16,
                   crossAxisSpacing: 16,

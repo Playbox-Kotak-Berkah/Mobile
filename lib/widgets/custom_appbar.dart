@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:playbox/routes/app_route.dart';
-import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:sizer/sizer.dart';
 
-PreferredSizeWidget CustomAppBar({required String title}) {
+PreferredSizeWidget CustomAppBar({required String title, Widget? action}) {
   return PreferredSize(
     preferredSize: Size(100.w, 70),
     child: AppBar(
@@ -25,6 +22,7 @@ PreferredSizeWidget CustomAppBar({required String title}) {
                     weight: FontWeight.bold,
                   ),
                 ),
+                action ?? Container(),
               ],
             ),
           ),

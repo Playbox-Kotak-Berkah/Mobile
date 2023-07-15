@@ -26,7 +26,7 @@ class Recommendation extends GetView<UserMarketplaceController> {
           crossAxisCount: 2,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          childAspectRatio: 0.73,
+          childAspectRatio: 0.67,
           children: [
             // CardProduct(
             //   data: ProductModel(
