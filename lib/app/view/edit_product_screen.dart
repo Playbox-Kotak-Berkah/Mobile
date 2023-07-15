@@ -57,7 +57,7 @@ class _EditProductPageState extends State<EditProductPage> {
               Obx(
                 () => controller.myProducts.isEmpty
                     ? SizedBox(
-                        height: 80.h,
+                        height: 75.h,
                         child: NoData(
                           action: "Tambah Produk",
                           text: "Anda belum menjual produk apapun",
@@ -86,6 +86,7 @@ class _EditProductPageState extends State<EditProductPage> {
                         ],
                       ),
               ),
+              SizedBox(height: 40),
             ],
           ),
         ),
