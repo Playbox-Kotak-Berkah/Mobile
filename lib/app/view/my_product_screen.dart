@@ -28,23 +28,32 @@ class _YourProductPageState extends State<YourProductPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Edit Produk",
-        action: GestureDetector(
-          onTap: () {
-            Get.toNamed(AppRoute.addProduct);
-          },
-          child: Container(
-            padding: EdgeInsets.all(2),
-            decoration: BoxDecoration(
-              color: ColorConstants.primary[400],
-              borderRadius: BorderRadius.circular(100),
+        title: "Produk Saya",
+      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.zero,
+              visualDensity: VisualDensity.compact,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              fixedSize: Size(60, 60),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(200),
+              ),
             ),
+            onPressed: () {
+              Get.toNamed(AppRoute.addProduct);
+            },
             child: Icon(
               Icons.add,
               color: ColorConstants.slate[100],
+              size: 32,
             ),
           ),
-        ),
+          SizedBox(height: 20),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
