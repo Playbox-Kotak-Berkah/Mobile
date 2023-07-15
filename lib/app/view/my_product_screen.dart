@@ -85,7 +85,12 @@ class _YourProductPageState extends State<YourProductPage> {
                               .map(
                                 (e) => CardSeller(
                                   data: e,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.toNamed(
+                                      AppRoute.editProduct,
+                                      parameters: {'id': "${e.id}"},
+                                    );
+                                  },
                                   actionText: 'Edit Produk',
                                 ),
                               )

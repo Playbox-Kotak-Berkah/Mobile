@@ -2,10 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:playbox/app/controller/add_product_controller.dart';
 import 'package:playbox/utils/color_constants.dart';
-import 'package:playbox/utils/imagepicker_handler.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:sizer/sizer.dart';
 

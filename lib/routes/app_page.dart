@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:playbox/app/bindings/add_product_bindings.dart';
 import 'package:playbox/app/bindings/dashboard_bindings.dart';
+import 'package:playbox/app/bindings/edit_product_bindings.dart';
 import 'package:playbox/app/bindings/edit_profile_bindings.dart';
 import 'package:playbox/app/bindings/fa_marketplace_bindings.dart';
 import 'package:playbox/app/bindings/kontrol_bindings.dart';
@@ -11,6 +12,7 @@ import 'package:playbox/app/bindings/register_bindings.dart';
 import 'package:playbox/app/bindings/u_marketplace_bindings.dart';
 import 'package:playbox/app/view/add_product_screen.dart';
 import 'package:playbox/app/view/dashboard_screen.dart';
+import 'package:playbox/app/view/edit_product_screen.dart';
 import 'package:playbox/app/view/my_product_screen.dart';
 import 'package:playbox/app/view/edit_profile_screen.dart';
 import 'package:playbox/app/view/fa_marketplace_screen.dart';
@@ -94,5 +96,13 @@ List<GetPage<dynamic>> appPage() {
       page: () => YourProductPage(),
       binding: FarmerMarketplaceBinding(),
     ),
+    GetPage(
+      name: AppRoute.editProduct,
+      page: () => EditProductPage(),
+      bindings: [
+        FarmerMarketplaceBinding(),
+        EditProductBinding(),
+      ],
+    )
   ];
 }

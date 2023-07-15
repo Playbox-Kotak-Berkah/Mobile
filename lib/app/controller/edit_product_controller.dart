@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart' hide MultipartFile hide FormData;
 import 'package:image_picker/image_picker.dart';
 import 'package:playbox/app/controller/fa_marketplace_controller.dart';
@@ -12,8 +12,10 @@ import 'package:playbox/services/api/request_method.dart';
 import 'package:playbox/utils/form_converter.dart';
 import 'package:playbox/utils/imagepicker_handler.dart';
 
-class AddProductController extends GetxController {
-  static AddProductController get i => Get.find();
+class EditProductController extends GetxController {
+  static EditProductController get i => Get.find();
+
+  Rxn<ProductModel> product = Rxn<ProductModel>();
 
   RxMap<String, TextEditingController> form = <String, TextEditingController>{
     "name": TextEditingController(),
@@ -21,8 +23,45 @@ class AddProductController extends GetxController {
   }.obs;
 
   var formKey = GlobalKey<FormState>();
-
   Rxn<File> image = Rxn<File>();
+
+  @override
+  void onInit() async {
+    super.onInit();
+    final controller = FarmerMarketplaceController.i;
+    final id = Get.parameters['id']!;
+    getDetailProduct(id);
+
+    var list =
+        controller.myProducts.where((e) => e.id == int.parse(id)).toList();
+    if (list.isNotEmpty) {
+      product.value = list[0];
+      if (product.value != null) {
+        assignJson();
+        image.value = await getImage(url: product.value!.photo);
+      }
+    }
+  }
+
+  void assignJson() {
+    form['name']!.text = product.value!.name;
+    form['price']!.text = "${product.value!.price}";
+  }
+
+  void getDetailProduct(String id) async {
+    var response = await fetchData<ProductModel>(
+      url: "/api/market-farmer/products/$id",
+      method: RequestMethod.GET,
+    );
+
+    if (response != null) {
+      product.value = response.data;
+      if (product.value != null) {
+        assignJson();
+        image.value = await getImage(url: product.value!.photo);
+      }
+    }
+  }
 
   void pickImageProduct() async {
     final pickedImage = await pickImage(ImageSource.gallery);
@@ -32,6 +71,7 @@ class AddProductController extends GetxController {
   }
 
   void submit() async {
+    final id = Get.parameters['id']!;
     if (image.value == null) {
       ApiUtils.showAlert("Gambar produk tidak boleh kosong");
       return;
@@ -44,10 +84,11 @@ class AddProductController extends GetxController {
       );
       final formData = FormData.fromMap(data);
       var response = await fetchData<ProductModel>(
-        url: "/api/market-farmer/add",
-        method: RequestMethod.POST,
+        url: "/api/market-farmer/update/$id",
+        method: RequestMethod.PATCH,
         data: formData,
       );
+
       if (response != null) {
         FarmerMarketplaceController farmerMarketplaceController =
             FarmerMarketplaceController.i;
