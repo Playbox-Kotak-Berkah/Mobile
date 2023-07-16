@@ -206,4 +206,31 @@ class DashboardController extends GetxController {
       getLatestCycleDaily();
     }
   }
+
+  void endCycle() async {
+    if (selectedFarm.value == null) {
+      ApiUtils.showAlert("Please select farm first");
+      return;
+    }
+    if (selectedPond.value == null) {
+      ApiUtils.showAlert("Please select pond first");
+      return;
+    }
+    if (selectedCycle.value == null) {
+      ApiUtils.showAlert("Please select cycle first");
+      return;
+    }
+
+    var response = await fetchData<CycleModel>(
+      url:
+          "/api/farmer/${selectedCycle.value!.id}/${selectedPond.value!.id}/${selectedCycle.value!.id}/akhiri-siklus",
+      method: RequestMethod.POST,
+    );
+
+    if (response != null) {
+      ApiUtils.showAlert("Berhasil mengakhiri siklus", isSuccess: true);
+      cycleDaily.value = null;
+      getAllCycle();
+    }
+  }
 }

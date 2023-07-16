@@ -64,6 +64,23 @@ class DasboardCard extends GetView<DashboardController> {
             ),
           ],
         ),
+        SizedBox(height: 12),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.end,
+        //   children: [
+        //     Expanded(
+        //       child: Container(),
+        //     ),
+        //     Expanded(
+        //       child: ElevatedButton(
+        //         onPressed: () {
+        //           controller.endCycle();
+        //         },
+        //         child: Text('Akhiri Siklus'),
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }
