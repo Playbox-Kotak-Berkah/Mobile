@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:playbox/app/models/cycle/cycle_model.dart';
+import 'package:playbox/app/models/cycle_daily/cycle_daily_model.dart';
 import 'package:playbox/app/models/farm/farm_model.dart';
+import 'package:playbox/app/models/input_cycle/input_cycle_model.dart';
 import 'package:playbox/app/models/pond/pond_model.dart';
 import 'package:playbox/services/api/api_utils.dart';
 import 'package:playbox/services/api/fetch_data.dart';
@@ -15,6 +17,7 @@ class DashboardController extends GetxController {
   Rxn<FarmModel> selectedFarm = Rxn<FarmModel>();
   Rxn<PondModel> selectedPond = Rxn<PondModel>();
   Rxn<CycleModel> selectedCycle = Rxn<CycleModel>();
+  Rxn<CycleDailyModel> cycleDaily = Rxn<CycleDailyModel>();
 
   RxInt farmId = (-1).obs;
   RxInt pondId = (-1).obs;
@@ -100,6 +103,34 @@ class DashboardController extends GetxController {
     }
   }
 
+  void createCycle(Map<String, String> data) async {
+    if (selectedFarm.value == null) {
+      ApiUtils.showAlert("Please select farm frist");
+      return;
+    }
+    if (selectedPond.value == null) {
+      ApiUtils.showAlert("Please select pond first");
+      return;
+    }
+
+    var response = await fetchData<CycleModel>(
+      url:
+          "/api/farmer/${selectedFarm.value!.id}/${selectedPond.value!.id}/add-siklus",
+      method: RequestMethod.POST,
+      data: data,
+    );
+
+    if (response != null) {
+      ApiUtils.showAlert(
+        "Berhasil membuat siklus",
+        isSuccess: true,
+      );
+
+      getAllCycle();
+      Get.back();
+    }
+  }
+
   void getAllCycle() async {
     if (selectedFarm.value == null) {
       ApiUtils.showAlert("Please select farm frist");
@@ -137,10 +168,42 @@ class DashboardController extends GetxController {
       return;
     }
 
-    var response = await fetchData(
+    var response = await fetchData<CycleDailyModel>(
       url:
           "/api/farmer/${selectedCycle.value!.id}/${selectedPond.value!.id}/${selectedCycle.value!.id}/latest",
       method: RequestMethod.GET,
     );
+
+    if (response != null) {
+      cycleDaily.value = response.data;
+    }
+  }
+
+  void inputCycleDaily(Map<String, double> data) async {
+    if (selectedFarm.value == null) {
+      ApiUtils.showAlert("Please select farm first");
+      return;
+    }
+    if (selectedPond.value == null) {
+      ApiUtils.showAlert("Please select pond first");
+      return;
+    }
+    if (selectedCycle.value == null) {
+      ApiUtils.showAlert("Please select cycle first");
+      return;
+    }
+
+    var response = await fetchData<InputCycleModel>(
+      url:
+          "/api/farmer/${selectedCycle.value!.id}/${selectedPond.value!.id}/${selectedCycle.value!.id}/input-data",
+      data: data,
+      method: RequestMethod.POST,
+    );
+
+    if (response != null) {
+      ApiUtils.showAlert("Berhasil input data", isSuccess: true);
+      Get.back();
+      getLatestCycleDaily();
+    }
   }
 }

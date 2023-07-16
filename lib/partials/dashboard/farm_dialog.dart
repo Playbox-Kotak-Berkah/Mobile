@@ -76,8 +76,7 @@ class _FarmDialogState extends State<FarmDialog> {
                           child: ElevatedButton(
                             onPressed: () {
                               if (key.currentState!.validate()) {
-                                final data =
-                                    formConverter(form) as Map<String, String>;
+                                final data = formConverter(form);
                                 controller.createFarm(data);
                               }
                             },

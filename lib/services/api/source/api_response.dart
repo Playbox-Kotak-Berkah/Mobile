@@ -1,4 +1,6 @@
 // ignore_for_file: annotate_overrides, overridden_fields
+import 'dart:ffi';
+
 import 'package:playbox/services/api/source/base_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:playbox/services/api/source/model_factory.dart';
@@ -58,7 +60,7 @@ class _Converter<T> implements JsonConverter<T?, Object?> {
     if (json is Map<String, dynamic>) {
       return ModelFactory.fromJson(T, json) as T;
     }
-    return json as T;
+    return json as Null;
   }
 
   @override

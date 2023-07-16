@@ -37,7 +37,8 @@ class AddProductController extends GetxController {
       return;
     }
     if (formKey.currentState!.validate()) {
-      final data = formConverter(form);
+      Map<String, dynamic> data =
+          form.map((key, value) => MapEntry(key, value.text));
       data['photo'] = MultipartFile.fromBytes(
         await image.value!.readAsBytes(),
         filename: image.value!.path,

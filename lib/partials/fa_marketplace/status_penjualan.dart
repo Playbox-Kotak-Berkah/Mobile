@@ -55,7 +55,7 @@ class StatusPenjualan extends GetView<FarmerMarketplaceController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "10",
+                    "2",
                     style: body1TextStyle(
                       color: ColorConstants.primary[500],
                       weight: FontWeight.bold,
@@ -89,7 +89,7 @@ class StatusPenjualan extends GetView<FarmerMarketplaceController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "10",
+                    "7",
                     style: body1TextStyle(
                       color: ColorConstants.primary[500],
                       weight: FontWeight.bold,

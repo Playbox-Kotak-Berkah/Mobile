@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:playbox/app/controller/dashboard_controller.dart';
 import 'package:playbox/partials/dashboard/cycle_dialog.dart';
 import 'package:playbox/partials/dashboard/farm_dialog.dart';
+import 'package:playbox/partials/dashboard/input_dialog.dart';
 import 'package:playbox/partials/dashboard/pond_dialog.dart';
 import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
@@ -167,7 +168,7 @@ class _DashboardSelectorState extends State<DashboardSelector> {
                   onChanged: (e) {
                     controller.selectedCycle.value = controller.cycles
                         .firstWhere((element) => element.id == e);
-                    // controller.getLatestCycleDaily();
+                    controller.getLatestCycleDaily();
                   },
                   isDisabled:
                       controller.selectedPond.value == null ? true : false,
@@ -219,6 +220,47 @@ class _DashboardSelectorState extends State<DashboardSelector> {
               ),
             ),
           ],
+        ),
+        SizedBox(height: 16),
+        Obx(
+          () => controller.selectedCycle.value != null
+              ? Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorConstants.slate[50],
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => InputDialog(),
+                          );
+                        },
+                        child: Text(
+                          'Input Data',
+                          style: body5TextStyle(
+                            weight: FontWeight.w600,
+                            color: ColorConstants.primary[500],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => CycleDialog(),
+                          );
+                        },
+                        child: Text('Buat Siklus'),
+                      ),
+                    ),
+                  ],
+                )
+              : Container(),
         ),
       ],
     );

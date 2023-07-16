@@ -111,13 +111,32 @@ class _DashboardPageState extends State<DashboardPage> {
                                   ),
                           ),
                           SizedBox(height: 20),
-                          SizedBox(
-                            height: 200,
-                            child: NoData(
-                              text: "Input siklus kolam terlebih dahulu",
-                            ),
+                          Obx(() {
+                            if (controller.selectedCycle.value == null) {
+                              return SizedBox(
+                                height: 30.h,
+                                child: NoData(
+                                  text: "Input siklus kolam terlebih dahulu",
+                                ),
+                              );
+                            }
+                            if (controller.selectedCycle.value != null &&
+                                controller.cycleDaily.value == null) {
+                              return SizedBox(
+                                height: 30.h,
+                                child: NoData(
+                                  text:
+                                      "Siklus anda tidak memiliki data. Silakan upload data terlebih dahulu",
+                                ),
+                              );
+                            }
+                            return Container();
+                          }),
+                          Obx(
+                            () => controller.cycleDaily.value != null
+                                ? DasboardCard()
+                                : Container(),
                           ),
-                          // DasboardCard(),
                         ],
                       ),
               ),

@@ -83,8 +83,7 @@ class _PondDialogState extends State<PondDialog> {
                           child: ElevatedButton(
                             onPressed: () {
                               if (key.currentState!.validate()) {
-                                final data =
-                                    formConverter(form) as Map<String, String>;
+                                final data = formConverter(form);
                                 controller.createPond(data);
                               }
                             },

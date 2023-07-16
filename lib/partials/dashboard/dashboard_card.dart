@@ -17,20 +17,24 @@ class DasboardCard extends GetView<DashboardController> {
           children: [
             Expanded(
               flex: 1,
-              child: PhCard(
-                data: 7.1,
-                morning: 8.1,
-                afternoon: 7.9,
-                night: 7.8,
+              child: Obx(
+                () => PhCard(
+                  data: controller.cycleDaily.value?.ph_realtime,
+                  morning: controller.cycleDaily.value?.ph_pagi,
+                  afternoon: controller.cycleDaily.value?.ph_siang,
+                  night: controller.cycleDaily.value?.ph_malam,
+                ),
               ),
             ),
             SizedBox(width: 16),
             Expanded(
-              child: TempCard(
-                data: 7.1,
-                morning: 8.1,
-                afternoon: 7.9,
-                night: 7.8,
+              child: Obx(
+                () => TempCard(
+                  data: controller.cycleDaily.value?.suhu_realtime,
+                  morning: controller.cycleDaily.value?.suhu_pagi,
+                  afternoon: controller.cycleDaily.value?.suhu_siang,
+                  night: controller.cycleDaily.value?.suhu_malam,
+                ),
               ),
             ),
           ],
@@ -40,11 +44,13 @@ class DasboardCard extends GetView<DashboardController> {
           children: [
             Expanded(
               flex: 1,
-              child: DoCard(
-                data: 7.1,
-                morning: 8.1,
-                afternoon: 7.9,
-                night: 7.8,
+              child: Obx(
+                () => DoCard(
+                  data: controller.cycleDaily.value?.do_realtime,
+                  morning: controller.cycleDaily.value?.do_pagi,
+                  afternoon: controller.cycleDaily.value?.do_siang,
+                  night: controller.cycleDaily.value?.do_malam,
+                ),
               ),
             ),
             SizedBox(width: 16),

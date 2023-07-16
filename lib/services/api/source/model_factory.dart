@@ -1,5 +1,7 @@
 import 'package:playbox/app/models/cycle/cycle_model.dart';
+import 'package:playbox/app/models/cycle_daily/cycle_daily_model.dart';
 import 'package:playbox/app/models/farm/farm_model.dart';
+import 'package:playbox/app/models/input_cycle/input_cycle_model.dart';
 import 'package:playbox/app/models/login/login_model.dart';
 import 'package:playbox/app/models/pond/pond_model.dart';
 import 'package:playbox/app/models/product/product_model.dart';
@@ -23,6 +25,10 @@ abstract class ModelFactory {
       return CycleModel.fromJson(json);
     } else if (strType == (ProductModel).toString()) {
       return ProductModel.fromJson(json);
+    } else if (strType == (CycleDailyModel).toString()) {
+      return CycleDailyModel.fromJson(json);
+    } else if (strType == (InputCycleModel).toString()) {
+      return InputCycleModel.fromJson(json);
     } else {
       throw UnimplementedError();
     }

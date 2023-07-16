@@ -26,6 +26,10 @@ Future<ApiResponse<T>?> fetchData<T>({
       return request.data;
     }
 
+    // if (request.data['data'].runtimeType != T) {
+    //   return request;
+    // }
+
     ApiResponse<T> response = ApiResponse.fromJson(request.data);
     return response;
   } on DioException catch (e) {
