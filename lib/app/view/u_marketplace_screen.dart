@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:playbox/app/controller/u_marketplace_controller.dart';
-import 'package:playbox/partials/fa_marketplace/switch_user.dart';
 import 'package:playbox/partials/u_marketplace/card_filter.dart';
 import 'package:playbox/partials/u_marketplace/recommendation.dart';
+import 'package:playbox/utils/color_constants.dart';
 import 'package:playbox/utils/text_styles.dart';
 import 'package:playbox/widgets/app_bottombar.dart';
 import 'package:sizer/sizer.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class UserMarketplacePage extends GetView<UserMarketplaceController> {
   const UserMarketplacePage({super.key});
@@ -26,48 +28,25 @@ class UserMarketplacePage extends GetView<UserMarketplaceController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Toko",
-                      style: body1TextStyle(
-                        weight: FontWeight.bold,
-                      ),
-                    ),
+                    SvgPicture.asset("assets/logo/logo_marketplace.svg"),
                     Row(
                       children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: Icon(Icons.settings_outlined),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(100),
                           ),
+                          child: Icon(Icons.notifications_outlined),
                         ),
-                        SizedBox(width: 8),
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: Icon(Icons.notifications_outlined),
+                        SizedBox(width: 4),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(100),
                           ),
-                        ),
-                        SizedBox(width: 8),
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: Icon(Icons.chat_outlined),
-                          ),
+                          child: Icon(Icons.chat),
                         )
                       ],
                     )
@@ -86,12 +65,44 @@ class UserMarketplacePage extends GetView<UserMarketplaceController> {
           child: Column(
             children: [
               SizedBox(height: 10),
-              SwitchUser(isFarmer: false),
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                  hintText: "Cari Udang Vaname Segar",
+                  hintStyle: body5TextStyle(
+                    weight: FontWeight.w500,
+                    color: ColorConstants.slate[400],
+                  ),
+                ),
+              ),
               SizedBox(height: 16),
+              CarouselSlider(
+                items: [
+                  Container(
+                    margin: EdgeInsets.only(right: 12),
+                    child: Image.asset("assets/images/banner.png"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 12),
+                    child: Image.asset("assets/images/banner.png"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 12),
+                    child: Image.asset("assets/images/banner.png"),
+                  ),
+                ],
+                options: CarouselOptions(
+                  autoPlay: true,
+                  enableInfiniteScroll: false,
+                  padEnds: false,
+                  height: 140,
+                  viewportFraction: 0.9,
+                ),
+              ),
+              SizedBox(height: 8),
               CardFilter(),
-              SizedBox(height: 20),
+              SizedBox(height: 8),
               Recommendation(),
-              SizedBox(height: 40),
             ],
           ),
         ),

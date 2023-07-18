@@ -10,6 +10,7 @@ class Recommendation extends GetView<UserMarketplaceController> {
 
   @override
   Widget build(BuildContext context) {
+    print(controller.products);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -20,52 +21,20 @@ class Recommendation extends GetView<UserMarketplaceController> {
           ),
         ),
         SizedBox(height: 16),
-        GridView.count(
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          childAspectRatio: 0.67,
-          children: [
-            // CardProduct(
-            //   data: ProductModel(
-            //     image: "assets/images/udang_dogol.png",
-            //     name: "Udang Dogol",
-            //     price: 12500,
-            //     rating: 4.7,
-            //     sold: 120,
-            //   ),
-            // ),
-            // CardProduct(
-            //   data: ProductModel(
-            //     image: "assets/images/udang_dogol.png",
-            //     name: "Udang Dogol",
-            //     price: 12500,
-            //     rating: 4.7,
-            //     sold: 120,
-            //   ),
-            // ),
-            // CardProduct(
-            //   data: ProductModel(
-            //     image: "assets/images/udang_dogol.png",
-            //     name: "Udang Dogol",
-            //     price: 12500,
-            //     rating: 4.7,
-            //     sold: 120,
-            //   ),
-            // ),
-            // CardProduct(
-            //   data: ProductModel(
-            //     image: "assets/images/udang_dogol.png",
-            //     name: "Udang Dogol",
-            //     price: 12500,
-            //     rating: 4.7,
-            //     sold: 120,
-            //   ),
-            // ),
-          ],
+        Obx(
+          () => GridView.count(
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            childAspectRatio: 0.67,
+            children: controller.products
+                .map((element) => CardProduct(data: element))
+                .toList(),
+          ),
         ),
+        SizedBox(height: 40),
       ],
     );
   }

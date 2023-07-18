@@ -25,6 +25,18 @@ class CardProduct extends StatelessWidget {
                 data.photo,
                 width: 110,
                 fit: BoxFit.cover,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -38,12 +50,12 @@ class CardProduct extends StatelessWidget {
           SizedBox(height: 2),
           Text(
             formatCurrency(data.price),
-            style: h3TextStyle(
+            style: body6TextStyle(
               color: ColorConstants.primary[500],
               weight: FontWeight.w800,
             ),
           ),
-          SizedBox(height: 4),
+          SizedBox(height: 8),
           Row(
             children: [
               Icon(
@@ -52,7 +64,7 @@ class CardProduct extends StatelessWidget {
                 size: 12,
               ),
               Text(
-                "${data.rating}",
+                data.rating.toStringAsFixed(2),
                 style: body6TextStyle(),
               ),
               SizedBox(width: 4),
@@ -61,7 +73,7 @@ class CardProduct extends StatelessWidget {
                 style: body6TextStyle(
                   color: ColorConstants.slate[400],
                 ),
-              )
+              ),
             ],
           ),
         ],
